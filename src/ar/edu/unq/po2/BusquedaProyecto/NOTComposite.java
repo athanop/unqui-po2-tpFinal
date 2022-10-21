@@ -10,7 +10,6 @@ import ar.edu.unq.po2.Proyecto;
  */
 public class NOTComposite implements BusquedaComponent {
 	
-}
 	private BusquedaComponent filtro;
 	
 	public NOTComposite(BusquedaComponent filtro) {
