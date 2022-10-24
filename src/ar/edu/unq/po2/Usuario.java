@@ -9,7 +9,6 @@ public class Usuario {
 	private List<Muestra> muestrasRecolectadas;
 	private List<Proyecto> proyectosActivos;
 	private Preferencia preferencia;
-	private RecomendacionDeDesafio recomendacion;
 	
 
 	public List<Proyecto> getProyectosActivos() {
@@ -22,6 +21,11 @@ public class Usuario {
 
 	public Preferencia getPreferencia() {
 		return preferencia;
+	}
+	
+	
+	public List<Desafio> buscarDesafios(List<Desafio> desafios, RecomendacionDeDesafio recomendacion){
+		return recomendacion.seleccionDeDesafios(desafios);
 	}
 	
 	
