@@ -2,6 +2,8 @@ package ar.edu.unq.po2;
 
 import java.time.LocalDate;
 
+import ar.edu.unq.po2.Area.Coordenada;
+
 public class Muestra {
 
 	private Usuario usuario;
