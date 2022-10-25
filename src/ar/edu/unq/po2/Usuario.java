@@ -25,7 +25,7 @@ public class Usuario {
 	
 	
 	public List<Desafio> buscarDesafios(List<Desafio> desafios, RecomendacionDeDesafio recomendacion){
-		return recomendacion.seleccionDeDesafios(desafios);
+		return recomendacion.seleccionDeDesafios(preferencia, desafios);
 	}
 	
 	
