@@ -9,12 +9,12 @@ public class Usuario {
 	private List<Muestra> muestrasRecolectadas;
 	private List<Proyecto> proyectosActivos;
 	private Preferencia preferencia;
-	
+	private List<DesafioUsuario> desafiosUsuario;
 
 	public List<Proyecto> getProyectosActivos() {
 		return proyectosActivos;
 	}
-	
+
 	public List<Muestra> getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
 	}
@@ -22,15 +22,20 @@ public class Usuario {
 	public Preferencia getPreferencia() {
 		return preferencia;
 	}
-	
-	
-	public List<Desafio> buscarDesafios(List<Desafio> desafios, RecomendacionDeDesafio recomendacion){
+
+	public List<Desafio> buscarDesafios(List<Desafio> desafios, RecomendacionDeDesafio recomendacion) {
 		return recomendacion.seleccionDeDesafios(preferencia, desafios);
 	}
+
 	
+
+	public List<DesafioUsuario> getDesafiosUsuario() {
+		return desafiosUsuario;
+	}
 	
-	
-	
-	
-	
+	public void aceptarDesafio(DesafioUsuario desafioUsuario) throws Exception {
+		if (!this.getDesafiosUsuario().contains(desafioUsuario)) {
+			getDesafiosUsuario().add(desafioUsuario);
+		}
+	}
 }

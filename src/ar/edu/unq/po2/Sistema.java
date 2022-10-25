@@ -1,9 +1,7 @@
 package ar.edu.unq.po2;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import ar.edu.unq.po2.Proyecto;
-import ar.edu.unq.po2.Categoria;
 
 /**
  * Clase que modela el sistema. Es patron singleton
@@ -11,53 +9,63 @@ import ar.edu.unq.po2.Categoria;
  */
 public class Sistema {
 	/**
-	 * Un sistema a representar.
-	 * Una lista de todos los proyectos del sistema.
-	 * Una lista de todas las categorias del sistema.
+	 * Un sistema a representar. Una lista de todos los proyectos del sistema. Una
+	 * lista de todas las categorias del sistema.
 	 */
 	private static Sistema sistema;
 	private List<Proyecto> proyectos;
 	private List<Categoria> categorias;
-	 * /**
+
+	/**
 	 * Constructor. Crea una unica instancia de Sistema.
 	 */
 	Sistema() {
 		this.proyectos = new ArrayList<Proyecto>();
 		this.categorias = new ArrayList<Categoria>();
 	}
+
 	/**
 	 * Obtiene la unica instancia posible de Sistema, si no existe la crea.
+	 * 
 	 * @return
 	 */
 	public static Sistema getSistema() {
-		if(sistema == null) {
+		if (sistema == null) {
 			sistema = new Sistema();
 		}
 		return sistema;
 	}
+
 	/**
 	 * Obtiene la lista de Proyectos que hay en el Sistema.
+	 * 
 	 * @return una lista de Proyectos en el Sistema.
 	 */
 	public List<Proyecto> getProyectos() {
 		return proyectos;
 	}
+
 	/**
 	 * Obtiene la lista de Categorias que hay en el Sistema.
+	 * 
 	 * @return una lista de Categorias en el Sistema.
 	 */
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
+
 	/**
 	 * Agrega un Proyecto al Sistema.
+	 * 
 	 * @param proyecto es el Proyecto a agregar al Sistema.
 	 */
 	public void agregarProyecto(Proyecto proyecto) {
 		proyectos.add(proyecto);
 	}
+
 	/**
 	 * Agrega una Categoria al Sistema.
+	 * 
 	 * @param categoria es la Categoria a agregar al Sistema.
 	 */
 	public void agregarCategoria(Categoria categoria) {
