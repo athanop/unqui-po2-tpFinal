@@ -12,14 +12,14 @@ class PreferenciaTestCase {
 	@BeforeEach
 	void setUp() throws Exception {
 	
-		pref = new Preferencia(3, 20d, 4);	
+		pref = new Preferencia(3, 20, 4);	
 		
 	}
 
 	@Test
 	void testLaPreferenciaConoceSuNivelDeDificultadSuRecompensaYSuCantidadDeMuestras() {
 		assertEquals(pref.getDificultad(), 3);
-		assertEquals(pref.getRecompensa(), 20d);
+		assertEquals(pref.getRecompensa(), 20);
 		assertEquals(pref.getCantidadDeMuestras(), 4);
 	}
 
