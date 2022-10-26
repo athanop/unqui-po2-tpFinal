@@ -37,7 +37,7 @@ public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 		return desafios.entrySet()
 	            .stream()
 	            .sorted((d1,d2) -> Integer.compare(d1.getValue(), d2.getValue()))
-	            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+	            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (d1, d2) -> d1, LinkedHashMap::new));
 	}
 
 }
