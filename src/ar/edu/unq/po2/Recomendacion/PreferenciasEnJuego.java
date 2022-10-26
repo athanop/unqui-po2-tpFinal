@@ -6,21 +6,24 @@ import java.util.List;
 import ar.edu.unq.po2.Desafio;
 import ar.edu.unq.po2.Preferencia;
 
-public class PreferenciasEnJuego implements RecomendacionDeDesafio{
+public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 
 	@Override
 	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, List<Desafio> desafios) {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
-		for(Desafio des:desafios) {
-			
-			
-			//falta completar
+		for (Desafio des : desafios) {
+			this.calcularCoincidencia(preferencia, des);
 		}
+		
+		//Nahue HashMap desafio calcular la coincidencia
 		
 		return seleccion;
 	}
 
-	
-	
+	public Integer calcularCoincidencia(Preferencia preferencia, Desafio desafio) {
+		return (Math.abs(preferencia.getCantidadDeMuestras() - desafio.getMuestrasRecolectadas()))
+				+ (Math.abs(preferencia.getDificultad() - desafio.getDificultad()))
+				+ (Math.abs(preferencia.getRecompensa() - desafio.getRecompensa()));
+	}
 
 }

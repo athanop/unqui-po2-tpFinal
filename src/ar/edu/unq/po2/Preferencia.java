@@ -3,14 +3,14 @@ package ar.edu.unq.po2;
 public class Preferencia {
 
 	private Integer dificultad;
-	private Double recompensa;
+	private Integer recompensa;
 	private Integer cantidadDeMuestras;
 	
 	public Integer getDificultad() {
 		return dificultad;
 	}
 
-	public Double getRecompensa() {
+	public Integer getRecompensa() {
 		return recompensa;
 	}
 
@@ -18,7 +18,7 @@ public class Preferencia {
 		return cantidadDeMuestras;
 	}
 	
-	public Preferencia(Integer dificultad, Double recompensa, Integer cantidadDeMuestras) {
+	public Preferencia(Integer dificultad, Integer recompensa, Integer cantidadDeMuestras) {
 		super();
 		this.dificultad = dificultad;
 		this.recompensa = recompensa;
