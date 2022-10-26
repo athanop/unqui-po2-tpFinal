@@ -3,17 +3,13 @@ package ar.edu.unq.po2;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.manipulation.Sortable;
 
 import ar.edu.unq.po2.Recomendacion.PreferenciasEnJuego;
 
