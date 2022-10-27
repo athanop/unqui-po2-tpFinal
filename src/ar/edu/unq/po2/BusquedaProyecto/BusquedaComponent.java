@@ -10,5 +10,5 @@ import ar.edu.unq.po2.Proyecto;
  */
 public interface BusquedaComponent {
 
-	public List<Proyecto> filtradas(List<Proyecto> proyectos);
+	public List<Proyecto> filtrados(List<Proyecto> proyectos);
 }

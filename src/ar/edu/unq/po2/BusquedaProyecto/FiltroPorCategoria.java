@@ -1,7 +1,9 @@
 package ar.edu.unq.po2.BusquedaProyecto;
-package ar.edu.unq.po2.Proyecto;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import ar.edu.unq.po2.Categoria;
+import ar.edu.unq.po2.Proyecto;
 
 /**
  * Clase que modela la busqueda de proyectos con el filtro de categorias.

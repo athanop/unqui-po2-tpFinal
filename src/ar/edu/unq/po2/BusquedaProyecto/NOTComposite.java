@@ -18,6 +18,6 @@ public class NOTComposite implements BusquedaComponent {
 	
 	@Override
 	public List<Proyecto> filtrados(List<Proyecto> proyectos){
-		 return List<Proyecto> filtrados = filtro.filtrados(proyectos); // Revisar
+		 return filtro.filtrados(proyectos); // Revisar
 	}
 }

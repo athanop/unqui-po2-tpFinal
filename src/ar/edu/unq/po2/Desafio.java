@@ -1,5 +1,7 @@
 package ar.edu.unq.po2;
 
+import ar.edu.unq.po2.RestriccionTemporal.RestriccionTemporal;
+
 public class Desafio {
 
 	private Integer dificultad;
