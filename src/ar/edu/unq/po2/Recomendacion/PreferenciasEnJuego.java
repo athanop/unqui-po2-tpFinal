@@ -13,11 +13,10 @@ import ar.edu.unq.po2.Proyecto;
 public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 
 	@Override
-	public void seleccionDeDesafios(Preferencia preferencia, Proyecto proyecto) {
+	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, Proyecto proyecto) {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
 		seleccion = this.vincularDesafioConNivelDeCoincidencia(preferencia, proyecto.getDesafios()).keySet().stream().limit(5).collect(Collectors.toList());
-		proyecto.limpiarProyectos(); //quita los proyectos que tenia antes de filtrar
-		proyecto.setDesafios(seleccion); //agrega los que realmente interesan al usuario
+		return seleccion;
 	}
 		
 	public Integer calcularCoincidencia(Preferencia preferencia, Desafio desafio) {

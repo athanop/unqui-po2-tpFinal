@@ -1,10 +1,13 @@
 package ar.edu.unq.po2.Recomendacion;
 
+import java.util.List;
+
+import ar.edu.unq.po2.Desafio;
 import ar.edu.unq.po2.Preferencia;
 import ar.edu.unq.po2.Proyecto;
 
 public interface RecomendacionDeDesafio {
 
-	public void seleccionDeDesafios(Preferencia preferencia, Proyecto proyecto);
+	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, Proyecto proyecto);
 	
 }

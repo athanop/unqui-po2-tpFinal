@@ -68,13 +68,6 @@ public class Proyecto {
 	public void agregarDesafio(Desafio desafio) {
 		this.desafios.add(desafio);
 	}
-
-	public void limpiarProyectos() {
-		this.desafios.clear();
-	}
-
-	
-
 	
 
 	

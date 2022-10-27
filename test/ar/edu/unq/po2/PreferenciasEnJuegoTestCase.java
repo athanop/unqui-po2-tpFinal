@@ -3,6 +3,7 @@ package ar.edu.unq.po2;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -75,6 +76,16 @@ class PreferenciasEnJuegoTestCase {
 	
 	}
 	
+	@Test
+	void testLaSeleccionDeDesafiosEnUnProyectoQueNoContieneDesafios() {
+		desafiosAProbar = new ArrayList<Desafio>(); 
+		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
+		preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto);
+		
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto).size(), 0);
+	}
+
+	
 	
 	@Test
 	void testLaSeleccionDeDesafiosContiene5DesafiosConMenorNivelDeCoincidencia() {
@@ -116,8 +127,8 @@ class PreferenciasEnJuegoTestCase {
 		
 		preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto);
 		
-		verify(proyecto, times(1)).limpiarProyectos();
-		verify(proyecto, times(1)).setDesafios(resultadoOrdenadoEsperado);
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto).size(), 5);
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto), resultadoOrdenadoEsperado);
 	}
 
 

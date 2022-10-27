@@ -1,5 +1,6 @@
 package ar.edu.unq.po2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.po2.Recomendacion.RecomendacionDeDesafio;
@@ -27,10 +28,12 @@ public class Usuario {
 		return preferencia;
 	}
 
-	public void buscarDesafios(RecomendacionDeDesafio recomendacion) {
+	public List<Desafio> buscarDesafios(RecomendacionDeDesafio recomendacion) {
+		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
 		for(Proyecto proyecto:this.getProyectosActivos()) {
-			recomendacion.seleccionDeDesafios(preferencia, proyecto); 
+			desafiosFiltrados.addAll(recomendacion.seleccionDeDesafios(preferencia, proyecto)); 
 		}
+		return desafiosFiltrados;
 	}
 	
 	public void aceptarDesafio(DesafioUsuario desafioUsuario) throws Exception {
