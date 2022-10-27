@@ -25,7 +25,7 @@ public class Usuario {
 
 	public void buscarDesafios(RecomendacionDeDesafio recomendacion) {
 		for(Proyecto proyecto:this.getProyectosActivos()) {
-			recomendacion.seleccionDeDesafios(preferencia, proyecto); //lo dejo asi lo tengo q modificar
+			recomendacion.seleccionDeDesafios(preferencia, proyecto); 
 		}
 	}
 
