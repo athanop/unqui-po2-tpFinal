@@ -10,6 +10,7 @@ public class Proyecto {
 	private List<Categoria> categorias;
 	private List<Usuario> usuarios;
 	private List<Muestra> muestrasRecolectadas;
+	private List<Desafio> desafios;
 	
 	//-----getters-----
 	public String getDescripcion() {
@@ -52,6 +53,10 @@ public class Proyecto {
 
 	public void agregarMuestra(Muestra muestra) {
 		this.muestrasRecolectadas.add(muestra);
+	}
+
+	public List<Desafio> getDesafios() {
+		return desafios;
 	}
 
 	

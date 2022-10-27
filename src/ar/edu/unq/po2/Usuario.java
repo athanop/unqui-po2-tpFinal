@@ -23,8 +23,12 @@ public class Usuario {
 		return preferencia;
 	}
 
-	public List<Desafio> buscarDesafios(List<Desafio> desafios, RecomendacionDeDesafio recomendacion) {
-		return recomendacion.seleccionDeDesafios(preferencia, desafios);
+	public List<Proyecto> buscarDesafios(RecomendacionDeDesafio recomendacion) {
+		
+		for(Proyecto proyecto:this.getProyectosActivos()) {
+			recomendacion.seleccionDeDesafios(preferencia, proyecto); //lo dejo asi lo tengo q modificar
+		}
+		return 
 	}
 
 	
