@@ -19,6 +19,7 @@ class PreferenciasEnJuegoTestCase {
 	PreferenciasEnJuego preferenciasEnJuego;
 	Preferencia preferencia;
 	Desafio desafio, desafio2, desafio3, desafio4, desafio5, desafio6;
+	Proyecto proyecto;
 	List<Desafio> desafiosAProbar;
 	
 	@BeforeEach
@@ -26,6 +27,7 @@ class PreferenciasEnJuegoTestCase {
 	
 		preferenciasEnJuego = new PreferenciasEnJuego();
 		preferencia = mock(Preferencia.class);
+		proyecto = mock(Proyecto.class);
 		desafio = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
@@ -113,11 +115,12 @@ class PreferenciasEnJuegoTestCase {
 				
 		
 		desafiosAProbar = Arrays.asList(desafio5, desafio2, desafio4, desafio3, desafio6, desafio); 
+		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
 		
 		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2, desafio3, desafio4, desafio5);
 		
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, desafiosAProbar).size(), 5);
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, desafiosAProbar), resultadoOrdenadoEsperado);
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto).size(), 5);
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto), resultadoOrdenadoEsperado);
 	}
 	
 	

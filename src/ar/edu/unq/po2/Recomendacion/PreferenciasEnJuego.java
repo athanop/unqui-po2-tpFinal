@@ -8,13 +8,14 @@ import java.util.stream.Collectors;
 
 import ar.edu.unq.po2.Desafio;
 import ar.edu.unq.po2.Preferencia;
+import ar.edu.unq.po2.Proyecto;
 
 public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 
 	@Override
-	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, List<Desafio> desafios) {
+	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, Proyecto proyecto) {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
-		seleccion = this.vincularDesafioConNivelDeCoincidencia(preferencia, desafios).keySet().stream().limit(5).collect(Collectors.toList());
+		seleccion = this.vincularDesafioConNivelDeCoincidencia(preferencia, proyecto.getDesafios()).keySet().stream().limit(5).collect(Collectors.toList());
 		return seleccion;
 	}
 		
