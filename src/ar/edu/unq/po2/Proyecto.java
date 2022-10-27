@@ -12,7 +12,7 @@ public class Proyecto {
 	private List<Muestra> muestrasRecolectadas;
 	private List<Desafio> desafios;
 	
-	//-----getters-----
+	//-----getters y setters-----
 	public String getDescripcion() {
 		return this.descripcion;
 	}
@@ -37,6 +37,10 @@ public class Proyecto {
 		return desafios;
 	}
 	
+	public void setDesafios(List<Desafio> desafios) {
+		this.desafios = desafios;
+	}
+	
 	//-----constructor-----
 	
 	public Proyecto(String nombre, String descripcion) {
@@ -45,7 +49,7 @@ public class Proyecto {
 		this.categorias = new ArrayList<Categoria>();
 		this.usuarios = new ArrayList<Usuario>();
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
-		this.desafios = new ArrayList<Desafio>();
+		this.setDesafios(new ArrayList<Desafio>());
 	}
 
 	//adds para categoria, usuario y muestra
@@ -64,6 +68,12 @@ public class Proyecto {
 	public void agregarDesafio(Desafio desafio) {
 		this.desafios.add(desafio);
 	}
+
+	public void limpiarProyectos() {
+		this.desafios.clear();
+	}
+
+	
 
 	
 

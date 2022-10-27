@@ -114,11 +114,11 @@ class PreferenciasEnJuegoTestCase {
 		
 		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2, desafio3, desafio4, desafio5);
 		
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto).size(), 5);
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto), resultadoOrdenadoEsperado);
+		preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto);
+		
+		verify(proyecto, times(1)).limpiarProyectos();
+		verify(proyecto, times(1)).setDesafios(resultadoOrdenadoEsperado);
 	}
-	
-	
-	
+
 
 }
