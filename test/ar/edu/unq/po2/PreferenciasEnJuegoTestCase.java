@@ -108,11 +108,6 @@ class PreferenciasEnJuegoTestCase {
 		when(desafio5.getDificultad()).thenReturn(8);
 		when(desafio5.getRecompensa()).thenReturn(10);
 				
-		//valor 37
-		when(desafio6.getMuestrasRecolectadas()).thenReturn(30);
-		when(desafio6.getDificultad()).thenReturn(9);
-		when(desafio6.getRecompensa()).thenReturn(10);
-				
 		
 		desafiosAProbar = Arrays.asList(desafio5, desafio2, desafio4, desafio3, desafio6, desafio); 
 		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);

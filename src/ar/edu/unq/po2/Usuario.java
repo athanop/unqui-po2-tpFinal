@@ -18,6 +18,10 @@ public class Usuario {
 	public List<Muestra> getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
 	}
+	
+	public List<DesafioUsuario> getDesafiosUsuario() {
+		return desafiosUsuario;
+	}
 
 	public Preferencia getPreferencia() {
 		return preferencia;
@@ -27,12 +31,6 @@ public class Usuario {
 		for(Proyecto proyecto:this.getProyectosActivos()) {
 			recomendacion.seleccionDeDesafios(preferencia, proyecto); 
 		}
-	}
-
-	
-
-	public List<DesafioUsuario> getDesafiosUsuario() {
-		return desafiosUsuario;
 	}
 	
 	public void aceptarDesafio(DesafioUsuario desafioUsuario) throws Exception {

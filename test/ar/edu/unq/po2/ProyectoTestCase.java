@@ -12,6 +12,7 @@ class ProyectoTestCase {
 	Categoria categoriaAstronomia, categoriaBiologia;
 	Usuario usuario;
 	Muestra muestra, muestra2;
+	Desafio desafio;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -22,6 +23,7 @@ class ProyectoTestCase {
 		usuario = mock(Usuario.class);
 		muestra = mock(Muestra.class);
 		muestra2 = mock(Muestra.class);
+		desafio = mock(Desafio.class);
 	}
 
 	@Test
@@ -48,5 +50,11 @@ class ProyectoTestCase {
 		proyecto.agregarMuestra(muestra);
 		assertTrue(proyecto.getMuestrasRecolectadas().contains(muestra));
 		assertFalse(proyecto.getMuestrasRecolectadas().contains(muestra2));
+	}
+	
+	@Test
+	void testUnProyectoConoceLaCantidadDeDesafiosQueContiene() {
+		proyecto.agregarDesafio(desafio);
+		assertEquals(proyecto.getDesafios().size(), 1);
 	}
 }
