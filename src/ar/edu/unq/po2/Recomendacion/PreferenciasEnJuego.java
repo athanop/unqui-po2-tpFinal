@@ -20,9 +20,10 @@ public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 	}
 		
 	public Integer calcularCoincidencia(Preferencia preferencia, Desafio desafio) {
-		return (Math.abs(preferencia.getCantidadDeMuestras() - desafio.getMuestrasRecolectadas()))
-				+ (Math.abs(preferencia.getDificultad() - desafio.getDificultad()))
-				+ (Math.abs(preferencia.getRecompensa() - desafio.getRecompensa()));
+		Integer valorMuestras   = (Math.abs(preferencia.getCantidadDeMuestras() - desafio.getMuestrasRecolectadas()));
+		Integer valorDificultad = (Math.abs(preferencia.getDificultad() - desafio.getDificultad()));
+		Integer valorRecompensa = (Math.abs(preferencia.getRecompensa() - desafio.getRecompensa()));
+		return valorMuestras + valorDificultad + valorRecompensa;
 	}
 	
 

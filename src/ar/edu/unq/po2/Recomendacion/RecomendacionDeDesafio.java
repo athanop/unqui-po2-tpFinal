@@ -9,5 +9,6 @@ import ar.edu.unq.po2.Proyecto;
 public interface RecomendacionDeDesafio {
 
 	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, Proyecto proyecto);
-	
+
+	public Integer calcularCoincidencia(Preferencia preferencia, Desafio desafio);
 }
