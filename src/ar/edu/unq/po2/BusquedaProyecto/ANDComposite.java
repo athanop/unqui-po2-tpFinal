@@ -8,7 +8,7 @@ import ar.edu.unq.po2.Proyecto;
  * @author ivanapr
  *
  */
-public class ANDComposite extends BusquedaComponent {
+public class ANDComposite implements BusquedaComponent {
 
 	private BusquedaComponent filtro1;
 	private BusquedaComponent filtro2;

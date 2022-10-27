@@ -41,6 +41,10 @@ public class Proyecto {
 		this.desafios = desafios;
 	}
 	
+	public List<Categoria> getCategorias() {
+		return this.categorias;
+	}
+	
 	//-----constructor-----
 	
 	public Proyecto(String nombre, String descripcion) {

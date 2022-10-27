@@ -8,7 +8,7 @@ import ar.edu.unq.po2.Proyecto;
  * @author ivanapr
  *
  */
-public class ORComposite extends BusquedaComponent {
+public class ORComposite implements BusquedaComponent {
 	
 	private BusquedaComponent filtro1;
 	private BusquedaComponent filtro2;
