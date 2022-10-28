@@ -1,47 +1,41 @@
 package ar.edu.unq.po2.Recomendacion;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import ar.edu.unq.po2.Desafio;
-import ar.edu.unq.po2.Preferencia;
-import ar.edu.unq.po2.Proyecto;
+import ar.edu.unq.po2.Usuario;
 
 public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 
 	@Override
-	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, List<Proyecto> proyectos) {
+	public List<Desafio> seleccionDeDesafios(Usuario usuario) {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
-		for(Proyecto proyecto:proyectos) {
-			seleccion = this.vincularDesafioConNivelDeCoincidencia(preferencia, proyecto.getDesafios()).keySet().stream().limit(5).collect(Collectors.toList());	
-		}
-		return seleccion;
-	}
+		seleccion = desafiosDeTodosLosProyectosDelUsuario(usuario);
+		seleccion = ordenarDesafiosPorNivelDeCoincidencia(seleccion, usuario);
 		
-	public Integer calcularCoincidencia(Preferencia preferencia, Desafio desafio) {
-		Integer valorMuestras   = (Math.abs(preferencia.getCantidadDeMuestras() - desafio.getMuestrasRecolectadas()));
-		Integer valorDificultad = (Math.abs(preferencia.getDificultad() - desafio.getDificultad()));
-		Integer valorRecompensa = (Math.abs(preferencia.getRecompensa() - desafio.getRecompensa()));
-		return valorMuestras + valorDificultad + valorRecompensa;
+		return seleccion.stream().limit(5).toList();
+	}
+
+	private List<Desafio> desafiosDeTodosLosProyectosDelUsuario(Usuario usuario) {
+		List<Desafio> desafiosDeProyectos = new ArrayList<Desafio>();
+		usuario.
+		getProyectosActivos().
+		stream().
+		forEach(p -> desafiosDeProyectos.addAll(p.getDesafios())); 
+		return desafiosDeProyectos;
 	}
 	
-
-	public Map<Desafio, Integer> vincularDesafioConNivelDeCoincidencia(Preferencia preferencia, List<Desafio> desafios){
-		Map<Desafio, Integer> seleccion = new LinkedHashMap<Desafio, Integer>(); //uso linkedhashmap porque mantiene el orden de insercion
-		for(Desafio des:desafios) {
-			seleccion.put(des, this.calcularCoincidencia(preferencia, des));
-		}
-		return desafioOrdenadoPorNivelDeCoincidencia(seleccion);
-	}
-
-	private LinkedHashMap<Desafio, Integer> desafioOrdenadoPorNivelDeCoincidencia(Map<Desafio, Integer> desafios) {
-		return desafios.entrySet()
+	public List<Desafio> ordenarDesafiosPorNivelDeCoincidencia(List<Desafio> desafios, Usuario usuario) {
+		List<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
+		desafiosOrdenados = desafios
 	            .stream()
-	            .sorted((d1,d2) -> Integer.compare(d1.getValue(), d2.getValue()))
-	            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (d1, d2) -> d1, LinkedHashMap::new));
+	            .sorted((d1,d2) -> Integer.compare(d1.coincidenciasConLasPreferenciasDeUnUsuario(usuario), d2.coincidenciasConLasPreferenciasDeUnUsuario(usuario)))
+	            .collect(Collectors.toList());
+		return desafiosOrdenados;
 	}
-
+	
+	
+	
 }
