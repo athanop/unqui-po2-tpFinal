@@ -18,7 +18,7 @@ public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 		return seleccion.stream().limit(5).toList();
 	}
 
-	private List<Desafio> removerDesafiosQueYaContieneElUsuario(Usuario usuario, List<Desafio> seleccion) {
+	public List<Desafio> removerDesafiosQueYaContieneElUsuario(Usuario usuario, List<Desafio> seleccion) {
 		List<Desafio> desafiosSeleccionados = new ArrayList<Desafio>();
 		desafiosSeleccionados = seleccion;
 		desafiosSeleccionados.removeAll(filtrarDesafiosQueYaContieneElUsuario(usuario));

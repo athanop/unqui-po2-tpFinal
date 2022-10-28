@@ -21,8 +21,9 @@ class PreferenciasEnJuegoTestCase {
 	Preferencia preferencia;
 	Desafio desafio, desafio2, desafio3, desafio4, desafio5, desafio6;
 	Proyecto proyecto, proyecto2;
-	List<Desafio> desafiosAProbar;
+	List<Desafio> desafiosAProbar, desafiosARecomendar;
 	List<Proyecto> proyectosAProbar;
+	DesafioUsuario desafioDelUsuario;
 	Usuario usuario;
 	
 	@BeforeEach
@@ -33,6 +34,7 @@ class PreferenciasEnJuegoTestCase {
 		preferencia = mock(Preferencia.class);
 		proyecto = mock(Proyecto.class);
 		proyecto2 = mock(Proyecto.class);
+		desafioDelUsuario = mock(DesafioUsuario.class);
 		desafio = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
@@ -52,6 +54,32 @@ class PreferenciasEnJuegoTestCase {
 		when(usuario.getProyectosActivos()).thenReturn(proyectosAProbar);
 		
 		assertEquals(preferenciasEnJuego.seleccionDeDesafios(usuario).size(), 0);
+	}
+	
+	@Test
+	void testRemoverDesafiosQueUnUsuarioYaTieneAceptados() {
+		List<DesafioUsuario> desafiosDelUsuario = new ArrayList<DesafioUsuario>();
+		List<Desafio> desafiosEsperados = new ArrayList<Desafio>();
+		List<Desafio> desafiosARecomendar = new ArrayList<Desafio>();
+		
+		desafiosDelUsuario.add(desafioDelUsuario);
+		desafiosARecomendar.add(desafio);
+		desafiosARecomendar.add(desafio2);
+		desafiosARecomendar.add(desafio3);
+
+		desafiosEsperados.add(desafio2);
+		desafiosEsperados.add(desafio3);
+		
+		
+		when(desafioDelUsuario.getDesafio()).thenReturn(desafio);
+		when(proyecto.getDesafios()).thenReturn(desafiosARecomendar);
+		
+		proyectosAProbar = Arrays.asList(proyecto);
+		
+		when(usuario.getProyectosActivos()).thenReturn(proyectosAProbar);
+		when(usuario.getDesafiosUsuario()).thenReturn(desafiosDelUsuario);
+		
+		assertEquals(preferenciasEnJuego.removerDesafiosQueYaContieneElUsuario(usuario, desafiosARecomendar), desafiosEsperados);
 	}
 	
 	@Test
@@ -131,5 +159,9 @@ class PreferenciasEnJuegoTestCase {
 
 	
 	
-		
+	
+	
+	
+	
+	
 }
