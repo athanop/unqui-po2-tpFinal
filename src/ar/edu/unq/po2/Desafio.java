@@ -28,5 +28,19 @@ public class Desafio {
 	public RestriccionTemporal getRestriccion() {
 		return restriccion;
 	}
+	
+	public Desafio(Integer muestrasRecolectadas, Integer dificultad, Integer recompensa, RestriccionTemporal restriccion) {
+		this.dificultad = dificultad;
+		this.muestrasRecolectadas = muestrasRecolectadas;
+		this.recompensa = recompensa;
+		this.restriccion = restriccion;
+	}
+	
+	public Integer coincidenciasConLasPreferenciasDeUnUsuario(Usuario usuario) {
+		Integer valorMuestras   = (Math.abs(usuario.getPreferencia().getCantidadDeMuestras() - this.getMuestrasRecolectadas()));
+		Integer valorDificultad = (Math.abs(usuario.getPreferencia().getDificultad() - this.getDificultad()));
+		Integer valorRecompensa = (Math.abs(usuario.getPreferencia().getRecompensa() - this.getRecompensa()));
+		return valorMuestras + valorDificultad + valorRecompensa;
+	}
 
 }
