@@ -30,9 +30,8 @@ public class Usuario {
 
 	public List<Desafio> buscarDesafios(RecomendacionDeDesafio recomendacion) {
 		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
-		for(Proyecto proyecto:this.getProyectosActivos()) {
-			desafiosFiltrados.addAll(recomendacion.seleccionDeDesafios(preferencia, proyecto)); 
-		}
+			desafiosFiltrados.addAll(recomendacion.seleccionDeDesafios(preferencia, this.getProyectosActivos())); 
+	
 		return desafiosFiltrados;
 	}
 	

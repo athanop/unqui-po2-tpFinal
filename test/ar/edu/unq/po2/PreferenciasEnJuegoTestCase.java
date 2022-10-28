@@ -20,8 +20,9 @@ class PreferenciasEnJuegoTestCase {
 	PreferenciasEnJuego preferenciasEnJuego;
 	Preferencia preferencia;
 	Desafio desafio, desafio2, desafio3, desafio4, desafio5, desafio6;
-	Proyecto proyecto;
+	Proyecto proyecto, proyecto2;
 	List<Desafio> desafiosAProbar;
+	List<Proyecto> proyectosAProbar;
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -29,6 +30,7 @@ class PreferenciasEnJuegoTestCase {
 		preferenciasEnJuego = new PreferenciasEnJuego();
 		preferencia = mock(Preferencia.class);
 		proyecto = mock(Proyecto.class);
+		proyecto2 = mock(Proyecto.class);
 		desafio = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
@@ -37,6 +39,7 @@ class PreferenciasEnJuegoTestCase {
 		desafio6 = mock(Desafio.class);
 		
 		desafiosAProbar = Arrays.asList(desafio, desafio2, desafio3, desafio4, desafio5, desafio6);
+		proyectosAProbar = Arrays.asList(proyecto, proyecto2);
 	}
 
 	@Test
@@ -80,9 +83,10 @@ class PreferenciasEnJuegoTestCase {
 	void testLaSeleccionDeDesafiosEnUnProyectoQueNoContieneDesafios() {
 		desafiosAProbar = new ArrayList<Desafio>(); 
 		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
-		preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto);
 		
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto).size(), 0);
+		preferenciasEnJuego.seleccionDeDesafios(preferencia, proyectosAProbar);
+		
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyectosAProbar).size(), 0);
 	}
 
 	
@@ -122,13 +126,15 @@ class PreferenciasEnJuegoTestCase {
 		
 		desafiosAProbar = Arrays.asList(desafio5, desafio2, desafio4, desafio3, desafio6, desafio); 
 		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
+		proyectosAProbar = Arrays.asList(proyecto);
+		
 		
 		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2, desafio3, desafio4, desafio5);
 		
-		preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto);
+		preferenciasEnJuego.seleccionDeDesafios(preferencia, proyectosAProbar);
 		
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto).size(), 5);
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyecto), resultadoOrdenadoEsperado);
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyectosAProbar).size(), 5);
+		assertEquals(preferenciasEnJuego.seleccionDeDesafios(preferencia, proyectosAProbar), resultadoOrdenadoEsperado);
 	}
 
 

@@ -13,9 +13,11 @@ import ar.edu.unq.po2.Proyecto;
 public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 
 	@Override
-	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, Proyecto proyecto) {
+	public List<Desafio> seleccionDeDesafios(Preferencia preferencia, List<Proyecto> proyectos) {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
-		seleccion = this.vincularDesafioConNivelDeCoincidencia(preferencia, proyecto.getDesafios()).keySet().stream().limit(5).collect(Collectors.toList());
+		for(Proyecto proyecto:proyectos) {
+			seleccion = this.vincularDesafioConNivelDeCoincidencia(preferencia, proyecto.getDesafios()).keySet().stream().limit(5).collect(Collectors.toList());	
+		}
 		return seleccion;
 	}
 		
