@@ -24,16 +24,5 @@ class DesafioTestCase {
 		
 	}
 
-	@Test
-	void testUnDesafioConoceSuNivelDeCoincidenciaConUnUsuario() {
-		desafio = new Desafio(30, 4, 10, restriccion);
-		when(preferencia.getCantidadDeMuestras()).thenReturn(15);
-		when(preferencia.getDificultad()).thenReturn(2);
-		when(preferencia.getRecompensa()).thenReturn(25);
-		when(usuario.getPreferencia()).thenReturn(preferencia);
-		
-		assertEquals(desafio.coincidenciasConLasPreferenciasDeUnUsuario(usuario), 32);
-			
-	}
 
 }

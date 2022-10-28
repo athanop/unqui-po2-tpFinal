@@ -13,9 +13,24 @@ public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 	public List<Desafio> seleccionDeDesafios(Usuario usuario) {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
 		seleccion = desafiosDeTodosLosProyectosDelUsuario(usuario);
+		seleccion = removerDesafiosQueYaContieneElUsuario(usuario, seleccion);
 		seleccion = ordenarDesafiosPorNivelDeCoincidencia(seleccion, usuario);
 		return seleccion.stream().limit(5).toList();
 	}
+
+	private List<Desafio> removerDesafiosQueYaContieneElUsuario(Usuario usuario, List<Desafio> seleccion) {
+		List<Desafio> desafiosSeleccionados = new ArrayList<Desafio>();
+		desafiosSeleccionados = seleccion;
+		desafiosSeleccionados.removeAll(filtrarDesafiosQueYaContieneElUsuario(usuario));
+		return desafiosSeleccionados;
+		
+	}
+
+	private List<Desafio> filtrarDesafiosQueYaContieneElUsuario(Usuario usuario) {
+		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
+		desafiosFiltrados = usuario.getDesafiosUsuario().stream().map(d -> d.getDesafio()).toList();
+		return desafiosFiltrados;
+		}
 
 	private List<Desafio> desafiosDeTodosLosProyectosDelUsuario(Usuario usuario) {
 		List<Desafio> desafiosDeProyectos = new ArrayList<Desafio>();
