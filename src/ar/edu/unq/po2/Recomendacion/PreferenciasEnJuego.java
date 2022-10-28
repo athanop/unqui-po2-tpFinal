@@ -14,7 +14,6 @@ public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
 		seleccion = desafiosDeTodosLosProyectosDelUsuario(usuario);
 		seleccion = ordenarDesafiosPorNivelDeCoincidencia(seleccion, usuario);
-		
 		return seleccion.stream().limit(5).toList();
 	}
 
@@ -31,11 +30,18 @@ public class PreferenciasEnJuego implements RecomendacionDeDesafio {
 		List<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
 		desafiosOrdenados = desafios
 	            .stream()
-	            .sorted((d1,d2) -> Integer.compare(d1.coincidenciasConLasPreferenciasDeUnUsuario(usuario), d2.coincidenciasConLasPreferenciasDeUnUsuario(usuario)))
+	            .sorted((d1,d2) -> Integer.compare(this.coincidenciasConLasPreferenciasDeUnUsuario(d1, usuario), this.coincidenciasConLasPreferenciasDeUnUsuario(d2, usuario)))
 	            .collect(Collectors.toList());
 		return desafiosOrdenados;
 	}
 	
+	
+	public Integer coincidenciasConLasPreferenciasDeUnUsuario(Desafio desafio, Usuario usuario) {
+		Integer valorMuestras   = (Math.abs(usuario.getPreferencia().getCantidadDeMuestras() - desafio.getMuestrasRecolectadas()));
+		Integer valorDificultad = (Math.abs(usuario.getPreferencia().getDificultad() - desafio.getDificultad()));
+		Integer valorRecompensa = (Math.abs(usuario.getPreferencia().getRecompensa() - desafio.getRecompensa()));
+		return valorMuestras + valorDificultad + valorRecompensa;
+	}
 	
 	
 }

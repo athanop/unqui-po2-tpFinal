@@ -117,17 +117,15 @@ class PreferenciasEnJuegoTestCase {
 		when(desafio5.getRecompensa()).thenReturn(10);
 				
 		
-		//desafiosAProbar = Arrays.asList(desafio5, desafio2, desafio4, desafio3, desafio6, desafio); 
-		desafiosAProbar = Arrays.asList(desafio2, desafio); 
+		desafiosAProbar = Arrays.asList(desafio5, desafio2, desafio4, desafio3, desafio6, desafio); 
 		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
 		proyectosAProbar = Arrays.asList(proyecto);
 		when(usuario.getProyectosActivos()).thenReturn(proyectosAProbar);
 		
 		
-		//List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2, desafio3, desafio4, desafio5);
-		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2);
+		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2, desafio3, desafio4, desafio5);
 		
-		//assertEquals(5, preferenciasEnJuego.seleccionDeDesafios(usuario).size());
+		assertEquals(5, preferenciasEnJuego.seleccionDeDesafios(usuario).size());
 		assertEquals(resultadoOrdenadoEsperado, preferenciasEnJuego.seleccionDeDesafios(usuario));
 	}
 

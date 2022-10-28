@@ -36,11 +36,6 @@ public class Desafio {
 		this.restriccion = restriccion;
 	}
 	
-	public Integer coincidenciasConLasPreferenciasDeUnUsuario(Usuario usuario) {
-		Integer valorMuestras   = (Math.abs(usuario.getPreferencia().getCantidadDeMuestras() - this.getMuestrasRecolectadas()));
-		Integer valorDificultad = (Math.abs(usuario.getPreferencia().getDificultad() - this.getDificultad()));
-		Integer valorRecompensa = (Math.abs(usuario.getPreferencia().getRecompensa() - this.getRecompensa()));
-		return valorMuestras + valorDificultad + valorRecompensa;
-	}
+	
 
 }
