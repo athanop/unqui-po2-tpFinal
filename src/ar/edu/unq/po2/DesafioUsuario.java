@@ -1,6 +1,5 @@
 package ar.edu.unq.po2;
 
-import org.mockito.internal.stubbing.answers.ThrowsException;
 
 import ar.edu.unq.po2.EstadoDesafio.EstadoDesafioUsuario;
 
@@ -9,7 +8,8 @@ public class DesafioUsuario {
 	private Desafio desafio;
 	private Usuario usuario;
 	private EstadoDesafioUsuario estado;
-
+	private Integer valoracion;
+	
 	public EstadoDesafioUsuario getEstado() {
 		return estado;
 	}
@@ -26,14 +26,24 @@ public class DesafioUsuario {
 		return usuario;
 	}
 	
-	public Integer votoDelUsuario(Integer valoracion) throws Exception{
-		Integer votoDelUsuario = 0;
+	public Integer getValoracion() {
+		return valoracion;
+	}
+
+	public void setValoracion(Integer valoracion) {
+		this.valoracion = valoracion;
+	}
+	
+	public void votoDelUsuario(Integer valoracion) throws Exception{
 		if(estado.esDesafioCompleto(desafio, usuario) && valoracion <= 5) {
-			votoDelUsuario = valoracion;
+			this.setValoracion(valoracion); 
 		}
 		else { 
 			throw new Exception("la valoracion debe ser de 0 a 5");
 			}
-		return votoDelUsuario;
 	}
+
+	
+
+	
 }
