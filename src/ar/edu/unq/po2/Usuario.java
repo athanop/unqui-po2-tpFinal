@@ -39,4 +39,9 @@ public class Usuario {
 			getDesafiosUsuario().add(desafioUsuario);
 		}
 	}
+	
+	
+	public void votarDesafio(DesafioUsuario desafioUsuario, Integer valoracion) throws Exception{
+		desafioUsuario.votoDelUsuario(valoracion);
+	}
 }
