@@ -3,7 +3,7 @@ package ar.edu.unq.po2;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unq.po2.Recomendacion.RecomendacionDeDesafio;
+import ar.edu.unq.po2.Recomendacion.Recomendacion;
 
 public class Usuario {
 
@@ -28,7 +28,7 @@ public class Usuario {
 		return preferencia;
 	}
 
-	public List<Desafio> buscarDesafios(RecomendacionDeDesafio recomendacion) {
+	public List<Desafio> buscarDesafios(Recomendacion recomendacion) {
 		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
 			desafiosFiltrados.addAll(recomendacion.seleccionDeDesafios(this)); 
 		return desafiosFiltrados;
@@ -39,7 +39,6 @@ public class Usuario {
 			getDesafiosUsuario().add(desafioUsuario);
 		}
 	}
-	
 	
 	public void votarDesafio(DesafioUsuario desafioUsuario, Integer valoracion) throws Exception{
 		desafioUsuario.votoDelUsuario(valoracion);
