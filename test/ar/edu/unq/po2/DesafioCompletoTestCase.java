@@ -1,4 +1,4 @@
-package EstadoDeUsuarioTest;
+package ar.edu.unq.po2;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
