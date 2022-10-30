@@ -112,7 +112,7 @@ class PreferenciasEnJuegoTestCase {
 	
 	
 	@Test
-	void testLaSeleccionDeDesafiosContiene5DesafiosConMenorNivelDeCoincidencia() {
+	void testLaSeleccionDeDesafiosContiene5DesafiosConMejorNivelDeCoincidencia() {
 		
 		when(preferencia.getCantidadDeMuestras()).thenReturn(15);
 		when(preferencia.getDificultad()).thenReturn(2);

@@ -19,7 +19,7 @@ public class Favoritos extends Recomendacion{
 		return seleccion.stream().limit(5).toList();
 	}
 
-	private List<Desafio> ordenarVeinteDesafiosPorSimilitudConElDesafioFavoritoDelUsuario(Usuario usuario, List<Desafio> seleccion) {
+	public List<Desafio> ordenarVeinteDesafiosPorSimilitudConElDesafioFavoritoDelUsuario(Usuario usuario, List<Desafio> seleccion) {
 		return ordenarDesafiosPorSimilitud(veinteDesafiosPorNivelDeCoincidencia(seleccion, usuario), this.desafioFavoritoDelUsuario(usuario));
 	}
 	
