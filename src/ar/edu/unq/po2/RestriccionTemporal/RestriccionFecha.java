@@ -21,18 +21,10 @@ public class RestriccionFecha implements RestriccionTemporal {
 	private LocalDate getFechaFinal() {
 		return this.fechaFinal;
 	}
-	
+
 	@Override
 	public boolean esFechaPermitida(LocalDate fecha) {
 		return ((fecha.isAfter(this.getFechaInicio())) && (fecha.isBefore(this.getFechaFinal())));
-	}
-
-	@Override
-	public void agregarRestriccion(RestriccionTemporal restriccion) {	
-	}
-
-	@Override
-	public void eliminarRestriccion(RestriccionTemporal restriccion) {
 	}
 
 }

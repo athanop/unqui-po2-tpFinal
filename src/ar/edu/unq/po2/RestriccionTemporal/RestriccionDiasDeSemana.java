@@ -13,12 +13,4 @@ public class RestriccionDiasDeSemana implements RestriccionTemporal {
 		return fecha.getDayOfWeek().getValue() < 6;
 	}
 
-	@Override
-	public void agregarRestriccion(RestriccionTemporal restriccion) {
-	}
-
-	@Override
-	public void eliminarRestriccion(RestriccionTemporal restriccion) {
-	}
-
 }

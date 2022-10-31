@@ -23,16 +23,16 @@ public class RestriccionComposite implements RestriccionTemporal {
 	public void setRestricciones(List<RestriccionTemporal> restricciones) {
 		this.restricciones = restricciones;
 	}
+	
 	@Override
 	public boolean esFechaPermitida(LocalDate fecha) {
 		return this.getRestricciones().stream().allMatch(restriccion -> restriccion.esFechaPermitida(fecha));
 	}
-	@Override
+	
 	public void agregarRestriccion(RestriccionTemporal restriccion) {
 		this.getRestricciones().add(restriccion);
 	}
 
-	@Override
 	public void eliminarRestriccion(RestriccionTemporal restriccion) {
 		this.getRestricciones().remove(restriccion);
 	}
