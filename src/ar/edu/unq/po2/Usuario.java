@@ -29,6 +29,13 @@ public class Usuario {
 		return preferencia;
 	}
 
+	public Usuario(Preferencia preferencia) {
+		this.preferencia = preferencia;
+		this.muestrasRecolectadas = new ArrayList<Muestra>();
+		this.proyectosActivos = new ArrayList<Proyecto>();
+		this.desafiosUsuario = new ArrayList<DesafioUsuario>();
+		}
+	
 	public List<Desafio> buscarDesafios(Recomendacion recomendacion) {
 		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
 			desafiosFiltrados.addAll(recomendacion.seleccionDeDesafios(this)); 
@@ -44,5 +51,17 @@ public class Usuario {
 	
 	public void votarDesafio(DesafioUsuario desafioUsuario, Integer valoracion) throws Exception{
 		desafioUsuario.votoDelUsuario(valoracion);
+	}
+	
+	public void agregarMuestra(Muestra muestra) {
+		if(!this.muestrasRecolectadas.contains(muestra))
+			this.muestrasRecolectadas.add(muestra);
+	}
+	
+	public void registrarseEnProyecto(Proyecto proyecto) {
+		if(!this.getProyectosActivos().contains(proyecto)) {
+			proyecto.agregarUsuario(this);
+			this.proyectosActivos.add(proyecto);
+		}
 	}
 }
