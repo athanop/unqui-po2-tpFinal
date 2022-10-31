@@ -3,8 +3,6 @@ package ar.edu.unq.po2.RestriccionTemporal;
 import java.time.LocalDate;
 import java.util.List;
 
-import ar.edu.unq.po2.Muestra;
-
 /**
  * Clase que modela la restriccion temporal compuesta con el patron Composite.
  *
@@ -26,9 +24,8 @@ public class RestriccionComposite implements RestriccionTemporal {
 		this.restricciones = restricciones;
 	}
 	@Override
-	public void validar(Muestra muestra) {
-		// TODO Auto-generated method stub
-		
+	public boolean esFechaPermitida(LocalDate fecha) {
+		return this.getRestricciones().stream().allMatch(restriccion -> restriccion.esFechaPermitida(fecha));
 	}
 	@Override
 	public void agregarRestriccion(RestriccionTemporal restriccion) {

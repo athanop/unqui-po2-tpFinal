@@ -2,7 +2,6 @@ package ar.edu.unq.po2.BusquedaProyecto;
 
 import java.util.List;
 import ar.edu.unq.po2.Proyecto;
-import ar.edu.unq.po2.BusquedaProyecto.BusquedaComponent;
 
 /**
  * Clase que modela la busqueda de proyectos con el filtro AND en el patron Composite.

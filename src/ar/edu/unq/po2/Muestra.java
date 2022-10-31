@@ -35,5 +35,8 @@ public class Muestra {
 	public Coordenada getCoordenada() {
 		return this.coordenada;
 	}
+	public LocalDate getFechaYHora() {
+		return this.fechaYHora;
+	}
 
 }
