@@ -5,7 +5,7 @@ public class Preferencia {
 	private Integer dificultad;
 	private Integer recompensa;
 	private Integer cantidadDeMuestras;
-	
+
 	public Integer getDificultad() {
 		return dificultad;
 	}
@@ -17,7 +17,7 @@ public class Preferencia {
 	public Integer getCantidadDeMuestras() {
 		return cantidadDeMuestras;
 	}
-	
+
 	public Preferencia(Integer dificultad, Integer recompensa, Integer cantidadDeMuestras) {
 		super();
 		this.dificultad = dificultad;

@@ -10,9 +10,11 @@ import ar.edu.unq.po2.Proyecto;
  */
 public class FiltroPorTexto implements BusquedaComponent {
 	private String texto;
+
 	public FiltroPorTexto(String text) {
 		this.texto = text;
 	}
+
 	@Override
 	public List<Proyecto> filtrados(List<Proyecto> proyectos) {
 		return proyectos.stream().filter(p -> p.getNombre().contains(this.texto)).collect(Collectors.toList());

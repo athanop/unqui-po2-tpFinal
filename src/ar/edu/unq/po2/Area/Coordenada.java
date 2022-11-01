@@ -4,7 +4,7 @@ public class Coordenada {
 
 	private Double latitud;
 	private Double longitud;
-	
+
 	public Double getLatitud() {
 		return latitud;
 	}
@@ -12,19 +12,18 @@ public class Coordenada {
 	public Double getLongitud() {
 		return longitud;
 	}
-		
+
 	public Coordenada(Double latitud, Double longitud) {
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
-	
-	
+
 	public Double distanciaHasta(Coordenada coordenada) {
 		return this.distanciaCoordenada(this.getLatitud(), this.getLongitud(), coordenada.getLatitud(),
 				coordenada.getLongitud());
 	}
-	
-	//calcula la distancia entre dos coordenadas
+
+	// calcula la distancia entre dos coordenadas
 	private Double distanciaCoordenada(Double latitud1, Double longitud1, Double latitud2, Double longitud2) {
 		Double radioTierra = 6371d;
 		Double dLat = Math.toRadians(latitud2 - latitud1);
@@ -37,5 +36,5 @@ public class Coordenada {
 		Double distancia = radioTierra * va2;
 		return distancia;
 	}
-	
+
 }

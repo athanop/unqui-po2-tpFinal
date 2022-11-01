@@ -28,14 +28,13 @@ public class Desafio {
 	public RestriccionTemporal getRestriccion() {
 		return restriccion;
 	}
-	
-	public Desafio(Integer muestrasRecolectadas, Integer dificultad, Integer recompensa, RestriccionTemporal restriccion) {
+
+	public Desafio(Integer muestrasRecolectadas, Integer dificultad, Integer recompensa,
+			RestriccionTemporal restriccion) {
 		this.dificultad = dificultad;
 		this.muestrasRecolectadas = muestrasRecolectadas;
 		this.recompensa = recompensa;
 		this.restriccion = restriccion;
 	}
-	
-	
 
 }

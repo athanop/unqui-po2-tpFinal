@@ -19,7 +19,7 @@ public class Area {
 	}
 
 	public Double calcularArea() {
-		return 3.1416 * Math.pow(radio,2); //pi x radio al cuadrado
+		return 3.1416 * Math.pow(radio, 2); // pi x radio al cuadrado
 	}
-	
+
 }

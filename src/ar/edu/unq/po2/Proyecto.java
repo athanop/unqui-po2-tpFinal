@@ -11,16 +11,16 @@ public class Proyecto {
 	private List<Usuario> usuarios;
 	private List<Muestra> muestrasRecolectadas;
 	private List<Desafio> desafios;
-	
-	//-----getters y setters-----
+
+	// -----getters y setters-----
 	public String getDescripcion() {
 		return this.descripcion;
 	}
-	
+
 	public String getNombre() {
 		return this.nombre;
 	}
-	
+
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -32,18 +32,17 @@ public class Proyecto {
 	public List<Muestra> getMuestrasRecolectadas() {
 		return muestrasRecolectadas;
 	}
-	
+
 	public List<Desafio> getDesafios() {
 		return desafios;
 	}
-	
+
 	public void setDesafios(List<Desafio> desafios) {
 		this.desafios = desafios;
 	}
-	
-	
-	//-----constructor-----
-	
+
+	// -----constructor-----
+
 	public Proyecto(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -53,7 +52,7 @@ public class Proyecto {
 		this.setDesafios(new ArrayList<Desafio>());
 	}
 
-	//adds para categoria, usuario y muestra
+	// adds para categoria, usuario y muestra
 	public void agregarCategoria(Categoria categoria) {
 		this.categorias.add(categoria);
 	}
@@ -69,10 +68,5 @@ public class Proyecto {
 	public void agregarDesafio(Desafio desafio) {
 		this.desafios.add(desafio);
 	}
-	
-
-	
-	
-	
 
 }

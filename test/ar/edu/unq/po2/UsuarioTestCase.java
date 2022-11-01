@@ -1,9 +1,10 @@
 package ar.edu.unq.po2;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +12,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.Recomendacion.PreferenciasEnJuego;
-import ar.edu.unq.po2.Recomendacion.Recomendacion;
 
 class UsuarioTestCase {
 
@@ -21,7 +21,7 @@ class UsuarioTestCase {
 	Muestra muestra1, muestra2;
 	Proyecto proyecto, proyecto2;
 	PreferenciasEnJuego recomendacionPreferenciasEnJuego;
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		preferencia = mock(Preferencia.class);
@@ -39,7 +39,7 @@ class UsuarioTestCase {
 	void testUnUsuarioConoceCualesSonSusPreferencias() {
 		assertEquals(usuario.getPreferencia(), preferencia);
 	}
-	
+
 	@Test
 	void testUnUsuarioConoceCualesSonSusDesafios() throws Exception {
 		List<DesafioUsuario> desafios = Arrays.asList(desafioUsuario, desafioUsuario2);
@@ -47,35 +47,33 @@ class UsuarioTestCase {
 		usuario.aceptarDesafio(desafioUsuario2);
 		assertEquals(usuario.getDesafiosUsuario(), desafios);
 	}
-	
 
 	@Test
-	void testUnUsuarioConoceCualesSonSusMuestrasRecolectadas(){
+	void testUnUsuarioConoceCualesSonSusMuestrasRecolectadas() {
 		List<Muestra> muestras = Arrays.asList(muestra1, muestra2);
 		usuario.agregarMuestra(muestra1);
 		usuario.agregarMuestra(muestra2);
 		assertEquals(usuario.getMuestrasRecolectadas(), muestras);
 	}
-	
+
 	@Test
-	void testUnUsuarioConoceCualesSonSusProyectosActivos(){
+	void testUnUsuarioConoceCualesSonSusProyectosActivos() {
 		List<Proyecto> proyectos = Arrays.asList(proyecto, proyecto2);
 		usuario.registrarseEnProyecto(proyecto);
 		usuario.registrarseEnProyecto(proyecto2);
 		assertEquals(usuario.getProyectosActivos(), proyectos);
 	}
-	
+
 	@Test
-	void testUnUsuarioSabeRealizarUnaVotacionAUnDesafio() throws Exception{
+	void testUnUsuarioSabeRealizarUnaVotacionAUnDesafio() throws Exception {
 		usuario.votarDesafio(desafioUsuario, 5);
 		verify(desafioUsuario, times(1)).votoDelUsuario(5);
 	}
 
-
 	@Test
-	void testUnUsuarioSabeBuscarDesafiosSegunSuRecomendacion() throws Exception{
+	void testUnUsuarioSabeBuscarDesafiosSegunSuRecomendacion() throws Exception {
 		usuario.buscarDesafios(recomendacionPreferenciasEnJuego);
 		verify(recomendacionPreferenciasEnJuego, times(1)).seleccionDeDesafios(usuario);
 	}
-	
+
 }
