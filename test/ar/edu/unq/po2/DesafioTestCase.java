@@ -12,15 +12,13 @@ class DesafioTestCase {
 	Usuario usuario;
 	Preferencia preferencia;
 	RestriccionTemporal restriccion;
-	
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		preferencia = mock(Preferencia.class);
 		usuario = mock(Usuario.class);
 		restriccion = mock(RestriccionTemporal.class);
-		
-	}
 
+	}
 
 }
