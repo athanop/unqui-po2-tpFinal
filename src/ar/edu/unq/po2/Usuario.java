@@ -64,4 +64,8 @@ public class Usuario {
 			this.proyectosActivos.add(proyecto);
 		}
 	}
+	
+	public Integer cantidadDeMuestrasRecolectadas() {
+		return this.muestrasRecolectadas.size();
+	}
 }
