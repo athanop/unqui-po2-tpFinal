@@ -45,7 +45,6 @@ public class Usuario {
 	public void aceptarDesafio(DesafioUsuario desafioUsuario) throws Exception {
 		if (!this.getDesafiosUsuario().contains(desafioUsuario)) {
 			getDesafiosUsuario().add(desafioUsuario);
-			desafioUsuario.setEstado(new DesafioIncompleto());
 		}
 	}
 
@@ -65,7 +64,4 @@ public class Usuario {
 		}
 	}
 	
-	public Integer cantidadDeMuestrasRecolectadas() {
-		return this.muestrasRecolectadas.size();
-	}
 }

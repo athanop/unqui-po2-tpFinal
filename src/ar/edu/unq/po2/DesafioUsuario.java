@@ -1,5 +1,6 @@
 package ar.edu.unq.po2;
 
+import ar.edu.unq.po2.EstadoDesafio.DesafioIncompleto;
 import ar.edu.unq.po2.EstadoDesafio.EstadoDesafioUsuario;
 
 public class DesafioUsuario {
@@ -21,6 +22,7 @@ public class DesafioUsuario {
 		return desafio;
 	}
 
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -33,6 +35,15 @@ public class DesafioUsuario {
 		this.valoracion = valoracion;
 	}
 
+
+	public DesafioUsuario(Desafio desafio, Usuario usuario, Integer valoracion) {
+		this.desafio = desafio;
+		this.usuario = usuario;
+		this.valoracion = valoracion;
+		this.estado = new DesafioIncompleto();
+	}
+	
+	
 	public void votoDelUsuario(Integer valoracion) throws Exception {
 		if (estado.esDesafioCompleto(desafio, usuario) && valoracion <= 5) {
 			this.setValoracion(valoracion);
@@ -41,4 +52,8 @@ public class DesafioUsuario {
 		}
 	}
 
+	public void actualizarDesafio() throws Exception{
+		this.estado.actualizarDesafio(this);
+	}
+	
 }
