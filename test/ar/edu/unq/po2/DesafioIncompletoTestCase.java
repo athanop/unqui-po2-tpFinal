@@ -54,18 +54,6 @@ class DesafioIncompletoTestCase {
 		assertEquals(desafioIncompleto.porcentajeDeCompletitud(desafio, usuario), 25);
 	}
 
-	@Test
-	void testElDesfioIncompletoActualizaSuEstadoAEstadoCompleto() throws Exception {
-		muestrasAProbar = Arrays.asList(muestra);
-		when(desafio.getMuestrasRecolectadas()).thenReturn(1);
-		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
-		when(desafioUsuario.getEstado()).thenReturn(desafioIncompleto);
-		when(desafioUsuario.getUsuario()).thenReturn(usuario);
-		when(desafioUsuario.getDesafio()).thenReturn(desafio);
-		desafioIncompleto.actualizarDesafio(desafioUsuario);
-		
-		assertTrue(desafioIncompleto.esDesafioCompleto(desafio, usuario));
-		verify(desafioUsuario, times(1)).setEstado(desafioCompleto);
-	}
+	
 
 }
