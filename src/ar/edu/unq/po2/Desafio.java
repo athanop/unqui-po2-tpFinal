@@ -43,4 +43,7 @@ public class Desafio {
 		this.area = area;
 	}
 
+	public boolean muestraDentroDeAreaYFecha(Muestra muestra) {
+		return this.getRestriccion().esFechaPermitida(muestra.getFechaYHora()) && this.getArea().coordenadaEstaDentroDelArea(muestra.getCoordenada());
+	}
 }
