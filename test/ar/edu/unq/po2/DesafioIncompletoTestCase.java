@@ -1,9 +1,8 @@
 package ar.edu.unq.po2;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
@@ -41,7 +40,7 @@ class DesafioIncompletoTestCase {
 		muestrasAProbar = Arrays.asList(muestra);
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
-		
+
 		assertFalse(desafioIncompleto.esDesafioCompleto(desafio, usuario));
 	}
 
@@ -53,7 +52,5 @@ class DesafioIncompletoTestCase {
 
 		assertEquals(desafioIncompleto.porcentajeDeCompletitud(desafio, usuario), 25);
 	}
-
-	
 
 }
