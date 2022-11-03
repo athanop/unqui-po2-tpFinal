@@ -36,8 +36,21 @@ public class Muestra {
 		return this.coordenada;
 	}
 
+	/**
+	 * Getter fechaYHora
+	 * 
+	 * @return Devuelve la fecha y hora de cuando se realizo la muestra.
+	 */
 	public LocalDate getFechaYHora() {
 		return this.fechaYHora;
 	}
-
+	
+	/**
+	 * Getter usuario
+	 * 
+	 * @return Devuelve el Usuario que realizo la muestra.
+	 */
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
 }
