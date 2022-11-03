@@ -1,5 +1,7 @@
 package ar.edu.unq.po2.EstadoDesafio;
 
+import java.time.LocalDate;
+
 import ar.edu.unq.po2.Desafio;
 import ar.edu.unq.po2.DesafioUsuario;
 import ar.edu.unq.po2.Usuario;
@@ -20,6 +22,7 @@ public class DesafioIncompleto implements EstadoDesafioUsuario {
 	public void actualizarDesafio(DesafioUsuario desafio) throws Exception {
 		if (esDesafioCompleto(desafio.getDesafio(), desafio.getUsuario())) {
 			desafio.setEstado(new DesafioCompleto());
+			desafio.setFechaCompletitud(LocalDate.now());
 		}
 	}
 

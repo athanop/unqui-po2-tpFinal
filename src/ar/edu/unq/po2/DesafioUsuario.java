@@ -1,5 +1,7 @@
 package ar.edu.unq.po2;
 
+import java.time.LocalDate;
+
 import ar.edu.unq.po2.EstadoDesafio.DesafioIncompleto;
 import ar.edu.unq.po2.EstadoDesafio.EstadoDesafioUsuario;
 
@@ -12,6 +14,7 @@ public class DesafioUsuario {
 	private Usuario usuario;
 	private EstadoDesafioUsuario estado;
 	private Integer valoracion;
+	private LocalDate fechaCompletitud;
 
 	/**
 	 * Describe el estado del desafio aceptado por el usuario.
@@ -60,6 +63,14 @@ public class DesafioUsuario {
 	public void setValoracion(Integer valoracion) {
 		this.valoracion = valoracion;
 	}
+	
+	/**
+	 * Describe la fecha cuando se completo el desafio.
+	 * @return la fecha cuando el usuario completa el desafio.
+	 */
+	public LocalDate getFechaCompletitud() {
+		return fechaCompletitud;
+	}
 
 	/**
 	 * Constructor de un DesafioUsuario.
@@ -72,6 +83,7 @@ public class DesafioUsuario {
 		this.usuario = usuario;
 		this.valoracion = valoracion;
 		this.estado = new DesafioIncompleto();
+		this.fechaCompletitud = null;
 	}
 	
 	/**
@@ -91,6 +103,14 @@ public class DesafioUsuario {
 	 */
 	public void actualizarDesafio() throws Exception{
 		this.estado.actualizarDesafio(this);
+	}
+	
+	/**
+	 * Indica la fecha en donde el desafio es batido por el usuario cuando cambia de estado incompleto a completo.
+	 * @param fecha, la fecha cuando se completo el desafio. 
+	 */
+	public void setFechaCompletitud(LocalDate fecha) {
+		this.fechaCompletitud = fecha;
 	}
 	
 }
