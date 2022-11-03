@@ -76,13 +76,4 @@ public class Desafio {
 		this.restriccion = restriccion;
 		this.area = area;
 	}
-
-	/**
-	 * Indica si la muestra dada se encuentra dentro de la fecha y area permitidas por el desafio.
-	 * @param muestra representa a una Muestra
-	 * @return True si la muestra cumple con la restriccion temporal y el area correspondiente al desafio
-	 */
-	public boolean muestraDentroDeAreaYFecha(Muestra muestra) { // Falta validar fecha desde cuando se puede enviar muestra
-		return this.getRestriccion().esFechaPermitida(muestra.getFechaYHora()) && this.getArea().coordenadaEstaDentroDelArea(muestra.getCoordenada());
-	}
 }
