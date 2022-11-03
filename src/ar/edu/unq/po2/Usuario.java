@@ -3,7 +3,6 @@ package ar.edu.unq.po2;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unq.po2.EstadoDesafio.DesafioIncompleto;
 import ar.edu.unq.po2.Recomendacion.Recomendacion;
 
 public class Usuario {
@@ -63,5 +62,5 @@ public class Usuario {
 			this.proyectosActivos.add(proyecto);
 		}
 	}
-	
+
 }

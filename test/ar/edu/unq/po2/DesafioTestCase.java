@@ -1,6 +1,5 @@
 package ar.edu.unq.po2;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
@@ -29,22 +28,22 @@ class DesafioTestCase {
 		desafio.setMuestrasRecolectadas(2);
 		assertEquals(desafio.getMuestrasRecolectadas(), 2);
 	}
-	
+
 	@Test
 	void testGetDificultad() {
 		assertEquals(desafio.getDificultad(), 2);
 	}
-	
+
 	@Test
 	void testGetRecompensa() {
 		assertEquals(desafio.getRecompensa(), 50);
 	}
-	
+
 	@Test
 	void testRestriccionTemporal() {
 		assertEquals(desafio.getRestriccion(), restriccion);
 	}
-	
+
 	@Test
 	void testArea() {
 		assertEquals(desafio.getArea(), area);

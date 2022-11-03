@@ -2,12 +2,11 @@ package ar.edu.unq.po2.Recomendacion;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import ar.edu.unq.po2.Desafio;
 import ar.edu.unq.po2.Usuario;
 
-public class PreferenciasEnJuego extends Recomendacion{
+public class PreferenciasEnJuego extends Recomendacion {
 
 	@Override
 	public List<Desafio> seleccionDeDesafios(Usuario usuario) {
@@ -18,5 +17,4 @@ public class PreferenciasEnJuego extends Recomendacion{
 		return seleccion.stream().limit(5).toList();
 	}
 
-	
 }
