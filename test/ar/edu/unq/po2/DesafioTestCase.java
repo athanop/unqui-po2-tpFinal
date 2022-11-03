@@ -3,8 +3,8 @@ package ar.edu.unq.po2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.Area.Area;
 import ar.edu.unq.po2.RestriccionTemporal.RestriccionTemporal;
