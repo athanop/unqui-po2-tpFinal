@@ -18,13 +18,13 @@ public class Muestra {
 	 * 
 	 * @param usuario    Usuario que envio la muestra.
 	 * @param coordenada donde se tomo la muestra.
-	 * @param fechaYHora momento cuando se envio la muestra.
+	 * fechaYHora momento cuando se envio la muestra.
 	 */
-	public Muestra(Usuario usuario, Coordenada coordenada, LocalDate fechaYHora) {
+	public Muestra(Usuario usuario, Coordenada coordenada) {
 		super();
 		this.usuario = usuario;
 		this.coordenada = coordenada;
-		this.fechaYHora = fechaYHora;
+		this.fechaYHora = LocalDate.now();
 	}
 
 	/**
