@@ -10,5 +10,5 @@ public interface EstadoDesafioUsuario {
 
 	public Integer porcentajeDeCompletitud(Desafio desafio, Usuario usuario);
 
-	public void actualizarDesafio(DesafioUsuario desafio) throws Exception;
+	public void actualizarDesafio(DesafioUsuario desafio, Usuario usuario) throws Exception;
 }

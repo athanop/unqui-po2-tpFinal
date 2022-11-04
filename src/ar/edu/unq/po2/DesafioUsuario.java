@@ -11,7 +11,6 @@ import ar.edu.unq.po2.EstadoDesafio.EstadoDesafioUsuario;
 public class DesafioUsuario {
 
 	private Desafio desafio;
-	private Usuario usuario;
 	private EstadoDesafioUsuario estado;
 	private Integer valoracion;
 	private LocalDate fechaAceptacion;
@@ -41,13 +40,6 @@ public class DesafioUsuario {
 		return desafio;
 	}
 
-	/**
-	 * Describe el usuario que acepto el desafio.
-	 * @return el usuario.
-	 */
-	public Usuario getUsuario() {
-		return usuario;
-	}
 
 	/**
 	 * Describe la valoracion que le dio el usuario al desafio.
@@ -89,7 +81,6 @@ public class DesafioUsuario {
 	 */
 	public DesafioUsuario(Desafio desafio, Usuario usuario, Integer valoracion) {
 		this.desafio = desafio;
-		this.usuario = usuario;
 		this.valoracion = valoracion;
 		this.estado = new DesafioIncompleto();
 		this.fechaAceptacion = LocalDate.now();
@@ -100,7 +91,7 @@ public class DesafioUsuario {
 	 * Realiza la votacion del usuario hacia el desafio que acepto.
 	 * @param valoracion, el usuario puede votar cuanto le gusto realizar este desafio indicando un valor entre 0 y 5, donde 0 significa que no le gusto nada y 5 que le gusto mucho
 	 */
-	public void votoDelUsuario(Integer valoracion) throws Exception {
+	public void votoDelUsuario(Usuario usuario, Integer valoracion) throws Exception {
 		if (estado.esDesafioCompleto(desafio, usuario) && valoracion <= 5) {
 			this.setValoracion(valoracion);
 		} else {
@@ -111,8 +102,8 @@ public class DesafioUsuario {
 	/**
 	 * Actualiza el estado del desafio aceptado por el usuario.
 	 */
-	public void actualizarDesafio() throws Exception{
-		this.estado.actualizarDesafio(this);
+	public void actualizarDesafio(Usuario usuario) throws Exception{
+		this.estado.actualizarDesafio(this, usuario);
 	}
 	
 	/**

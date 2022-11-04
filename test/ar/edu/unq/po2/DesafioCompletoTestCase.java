@@ -50,6 +50,6 @@ class DesafioCompletoTestCase {
 	@Test
 	void testElDesfioCompletoNoPuedeActualizarSuDesafioPorqueYaEstaCompleto() throws Exception {
 
-		assertThrows(Exception.class, () -> desafioCompleto.actualizarDesafio(desafioUsuario));
+		assertThrows(Exception.class, () -> desafioCompleto.actualizarDesafio(desafioUsuario, usuario));
 	}
 }

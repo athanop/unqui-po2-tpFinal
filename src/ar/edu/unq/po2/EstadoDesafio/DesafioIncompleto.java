@@ -19,8 +19,8 @@ public class DesafioIncompleto implements EstadoDesafioUsuario {
 	}
 
 	@Override
-	public void actualizarDesafio(DesafioUsuario desafio) throws Exception {
-		if (esDesafioCompleto(desafio.getDesafio(), desafio.getUsuario())) {
+	public void actualizarDesafio(DesafioUsuario desafio, Usuario usuario) throws Exception {
+		if (esDesafioCompleto(desafio.getDesafio(), usuario)) {
 			desafio.setEstado(new DesafioCompleto());
 			desafio.setFechaCompletitud(LocalDate.now());
 		}

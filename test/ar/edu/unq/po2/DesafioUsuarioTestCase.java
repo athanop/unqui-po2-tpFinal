@@ -37,10 +37,6 @@ class DesafioUsuarioTestCase {
 		muestra2 = mock(Muestra.class);
 	}
 
-	@Test
-	void testUnDesafioUsuarioConoceAlUsuarioQueAceptoElDesafio() {
-		assertEquals(desafioUsuario.getUsuario(), usuario);
-	}
 
 	@Test
 	void testUnDesafioUsuarioConoceAlDesafio() {
@@ -54,7 +50,7 @@ class DesafioUsuarioTestCase {
 
 	@Test
 	void testUnDesafioUsuarioIndicaCuandoUnaValoracionEsInvalida() throws Exception {
-		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(6));
+		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(usuario, 6));
 	}
 
 	@Test
@@ -69,7 +65,7 @@ class DesafioUsuarioTestCase {
 		muestrasAProbar = Arrays.asList(muestra, muestra2);
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar); // el usuario ahora tiene dos muestras
 
-		desafioUsuario.actualizarDesafio(); // actualiza su estado a completo
+		desafioUsuario.actualizarDesafio(usuario); // actualiza su estado a completo
 
 		assertTrue(desafioUsuario.getEstado().esDesafioCompleto(desafio, usuario));
 
@@ -83,9 +79,9 @@ class DesafioUsuarioTestCase {
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
 		desafioUsuario = new DesafioUsuario(desafio, usuario, 3);
 
-		desafioUsuario.actualizarDesafio(); // intenta actualizar pero ya esta completo
+		desafioUsuario.actualizarDesafio(usuario); // intenta actualizar pero ya esta completo
 
-		assertThrows(Exception.class, () -> desafioUsuario.actualizarDesafio());
+		assertThrows(Exception.class, () -> desafioUsuario.actualizarDesafio(usuario));
 
 	}
 
@@ -96,7 +92,7 @@ class DesafioUsuarioTestCase {
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
 
-		desafioUsuario.votoDelUsuario(5);
+		desafioUsuario.votoDelUsuario(usuario, 5);
 
 		assertEquals(desafioUsuario.getValoracion(), 5);
 	}
@@ -108,7 +104,7 @@ class DesafioUsuarioTestCase {
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
 
-		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(6));
+		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(usuario, 6));
 	}
 
 }

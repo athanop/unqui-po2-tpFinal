@@ -48,7 +48,7 @@ public class Usuario {
 	}
 
 	public void votarDesafio(DesafioUsuario desafioUsuario, Integer valoracion) throws Exception {
-		desafioUsuario.votoDelUsuario(valoracion);
+		desafioUsuario.votoDelUsuario(this, valoracion);
 	}
 
 	public void agregarMuestra(Muestra muestra) {

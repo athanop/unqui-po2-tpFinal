@@ -41,69 +41,7 @@ class PreferenciasEnJuegoTestCase {
 		desafio6 = mock(Desafio.class);
 
 	}
-/*
-	@Test
-	void testLaSeleccionDeDesafiosEnUnProyectoQueNoContieneDesafios() {
-		desafiosAProbar = new ArrayList<Desafio>();
-		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
-		proyectosAProbar = Arrays.asList(proyecto);
-		when(usuario.getProyectosActivos()).thenReturn(proyectosAProbar);
 
-		assertEquals(preferenciasEnJuego.seleccionDeDesafios(usuario).size(), 0);
-	}
-
-	@Test
-	void testRemoverDesafiosQueUnUsuarioYaTieneAceptados() {
-		List<DesafioUsuario> desafiosDelUsuario = new ArrayList<DesafioUsuario>();
-		List<Desafio> desafiosEsperados = new ArrayList<Desafio>();
-		List<Desafio> desafiosARecomendar = new ArrayList<Desafio>();
-
-		desafiosDelUsuario.add(desafioDelUsuario);
-		desafiosARecomendar.add(desafio);
-		desafiosARecomendar.add(desafio2);
-		desafiosARecomendar.add(desafio3);
-
-		desafiosEsperados.add(desafio2);
-		desafiosEsperados.add(desafio3);
-
-		when(desafioDelUsuario.getDesafio()).thenReturn(desafio);
-		when(proyecto.getDesafios()).thenReturn(desafiosARecomendar);
-
-		proyectosAProbar = Arrays.asList(proyecto);
-
-		when(usuario.getProyectosActivos()).thenReturn(proyectosAProbar);
-		when(usuario.getDesafiosUsuario()).thenReturn(desafiosDelUsuario);
-
-		assertEquals(preferenciasEnJuego.removerDesafiosQueYaContieneElUsuario(usuario, desafiosARecomendar),
-				desafiosEsperados);
-	}
-
-	@Test
-	void testOrdenarDesafiosPorNivelDeCoincidencia() {
-		when(preferencia.getCantidadDeMuestras()).thenReturn(15);
-		when(preferencia.getDificultad()).thenReturn(2);
-		when(preferencia.getRecompensa()).thenReturn(25);
-
-		// valor 32
-		when(desafio.getMuestrasRecolectadas()).thenReturn(30);
-		when(desafio.getDificultad()).thenReturn(4);
-		when(desafio.getRecompensa()).thenReturn(10);
-
-		// valor 33
-		when(desafio2.getMuestrasRecolectadas()).thenReturn(30);
-		when(desafio2.getDificultad()).thenReturn(5);
-		when(desafio2.getRecompensa()).thenReturn(10);
-
-		desafiosAProbar = Arrays.asList(desafio2, desafio);
-		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2);
-
-		when(usuario.getPreferencia()).thenReturn(preferencia);
-
-		assertEquals(preferenciasEnJuego.ordenarDesafiosPorNivelDeCoincidencia(desafiosAProbar, usuario),
-				resultadoOrdenadoEsperado);
-	}
-*/
-	
 	@Test
 	void testLaSeleccionDeDesafiosContiene5DesafiosConMejorNivelDeCoincidencia() {
 
