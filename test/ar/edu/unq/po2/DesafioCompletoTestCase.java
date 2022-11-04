@@ -6,13 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.Area.Area;
+import ar.edu.unq.po2.Area.Coordenada;
 import ar.edu.unq.po2.EstadoDesafio.DesafioCompleto;
+import ar.edu.unq.po2.RestriccionTemporal.RestriccionDiasDeSemana;
 
 class DesafioCompletoTestCase {
 
@@ -22,11 +26,13 @@ class DesafioCompletoTestCase {
 	DesafioCompleto desafioCompleto;
 	Muestra muestra;
 	List<Muestra> muestrasAProbar;
-
+	Coordenada coordenada;
+	RestriccionDiasDeSemana restriccion;
+	Area area;
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		desafioCompleto = new DesafioCompleto();
-
 		usuario = mock(Usuario.class);
 		desafio = mock(Desafio.class);
 		desafioUsuario = mock(DesafioUsuario.class);
@@ -35,16 +41,21 @@ class DesafioCompletoTestCase {
 
 	@Test
 	void testElDesafioCompletoSabeSiEstaCompleto() {
-		assertTrue(desafioCompleto.esDesafioCompleto(desafio, usuario));
+		assertTrue(desafioCompleto.esDesafioCompleto(desafioUsuario, usuario));
 	}
 
 	@Test
-	void testElDesfioCompletoConoceSuPorcentajeDeCompletitud() {
+	void testElDesafioCompletoConoceSuPorcentajeDeCompletitud() {				
+	
 		muestrasAProbar = Arrays.asList(muestra);
+		
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
-		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
-
-		assertEquals(desafioCompleto.porcentajeDeCompletitud(desafio, usuario), 50);
+		
+		when(desafioUsuario.muestrasValidas(usuario)).thenReturn(1);
+		when(desafioUsuario.getDesafio()).thenReturn(desafio);
+		when(desafioUsuario.getFechaAceptacion()).thenReturn(LocalDate.now());
+		
+		assertEquals(desafioCompleto.porcentajeDeCompletitud(desafioUsuario, usuario), 50);
 	}
 
 	@Test
@@ -52,4 +63,5 @@ class DesafioCompletoTestCase {
 
 		assertThrows(Exception.class, () -> desafioCompleto.actualizarDesafio(desafioUsuario, usuario));
 	}
+	
 }

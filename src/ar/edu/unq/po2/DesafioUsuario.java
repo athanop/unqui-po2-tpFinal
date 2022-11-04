@@ -79,12 +79,12 @@ public class DesafioUsuario {
 	 * @param usuario, el usuario al que pertenece el desafio aceptado.
 	 * @param valoracion, el usuario puede votar cuanto le gusto realizar este desafio indicando un valor entre 0 y 5, donde 0 significa que no le gusto nada y 5 que le gusto mucho
 	 */
-	public DesafioUsuario(Desafio desafio, Usuario usuario, Integer valoracion) {
+	public DesafioUsuario(Desafio desafio, Integer valoracion, LocalDate fechaCompletitud) {
 		this.desafio = desafio;
 		this.valoracion = valoracion;
 		this.estado = new DesafioIncompleto();
 		this.fechaAceptacion = LocalDate.now();
-		this.fechaCompletitud = null;
+		this.fechaCompletitud = fechaCompletitud;
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class DesafioUsuario {
 	 * @param valoracion, el usuario puede votar cuanto le gusto realizar este desafio indicando un valor entre 0 y 5, donde 0 significa que no le gusto nada y 5 que le gusto mucho
 	 */
 	public void votoDelUsuario(Usuario usuario, Integer valoracion) throws Exception {
-		if (estado.esDesafioCompleto(desafio, usuario) && valoracion <= 5) {
+		if (estado.esDesafioCompleto(this, usuario) && valoracion <= 5) {
 			this.setValoracion(valoracion);
 		} else {
 			throw new Exception("la valoracion debe ser de 0 a 5");
@@ -114,12 +114,19 @@ public class DesafioUsuario {
 		this.fechaCompletitud = fecha;
 	}
 	
+
 	/**
 	 * Indica si la muestra dada se encuentra dentro de la fecha y area permitidas por el desafio y fue enviada luego de aceptar el desafio.
 	 * @param muestra representa a una Muestra
 	 * @return True si la muestra cumple con la fecha de aceptacion, la restriccion temporal y el area correspondiente al desafio
 	 */
-	public boolean muestraDentroDeAreaYFecha(Muestra muestra) { // Falta validar fecha desde cuando se puede enviar muestra
+	private boolean muestraDentroDeAreaYFecha(Muestra muestra) { // Falta validar fecha desde cuando se puede enviar muestra
 		return (muestra.getFechaYHora().isAfter(this.getFechaAceptacion())) && (this.getDesafio().getRestriccion().esFechaPermitida(muestra.getFechaYHora())) && (this.getDesafio().getArea().coordenadaEstaDentroDelArea(muestra.getCoordenada()));
 	}
+	
+	
+	public Integer muestrasValidas(Usuario usuario) {
+		return usuario.getMuestrasRecolectadas().stream().filter(m -> this.muestraDentroDeAreaYFecha(m)).toList().size();
+	}
+	
 }

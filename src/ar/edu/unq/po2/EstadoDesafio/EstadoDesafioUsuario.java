@@ -6,9 +6,9 @@ import ar.edu.unq.po2.Usuario;
 
 public interface EstadoDesafioUsuario {
 
-	public Boolean esDesafioCompleto(Desafio desafio, Usuario usuario);
+	public Boolean esDesafioCompleto(DesafioUsuario desafio, Usuario usuario);
 
-	public Integer porcentajeDeCompletitud(Desafio desafio, Usuario usuario);
+	public Integer porcentajeDeCompletitud(DesafioUsuario desafio, Usuario usuario);
 
 	public void actualizarDesafio(DesafioUsuario desafio, Usuario usuario) throws Exception;
 }

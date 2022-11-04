@@ -7,13 +7,13 @@ import ar.edu.unq.po2.Usuario;
 public class DesafioCompleto implements EstadoDesafioUsuario {
 
 	@Override
-	public Boolean esDesafioCompleto(Desafio desafio, Usuario usuario) {
+	public Boolean esDesafioCompleto(DesafioUsuario desafio, Usuario usuario) {
 		return true;
 	}
 
 	@Override
-	public Integer porcentajeDeCompletitud(Desafio desafio, Usuario usuario) {
-		return (usuario.getMuestrasRecolectadas().size() * 100) / desafio.getMuestrasRecolectadas();
+	public Integer porcentajeDeCompletitud(DesafioUsuario desafioUsuario, Usuario usuario) {
+		return (desafioUsuario.muestrasValidas(usuario) * 100) / desafioUsuario.getDesafio().getMuestrasRecolectadas();
 	}
 
 	@Override

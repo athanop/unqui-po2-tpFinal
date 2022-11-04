@@ -1,7 +1,9 @@
 package ar.edu.unq.po2;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,6 +31,17 @@ class AreaTestCase {
 	@Test
 	void testCalcularArea() {
 		assertEquals(area.calcularArea(), 7854);
+	}
+	
+	@Test
+	void testElAreaSabeSiSeEncuentraDentroDeUnasCoordenadas() {
+		
+		when(coordenada1.getLatitud()).thenReturn(0d);
+		when(coordenada1.getLongitud()).thenReturn(0d);
+		
+		area = new Area(coordenada1, 25d);
+		
+		assertTrue(area.coordenadaEstaDentroDelArea(coordenada1));
 	}
 
 }
