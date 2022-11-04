@@ -5,10 +5,8 @@ import java.util.List;
 import ar.edu.unq.po2.Proyecto;
 
 /**
- * Clase que modela la busqueda de proyectos con el filtro OR en el patron
+ * Clase que modela la busqueda de proyectos con el filtro NOT en el patron
  * Composite.
- * 
- * @author ivanapr
  *
  */
 public class NOTComposite implements BusquedaComponent {
@@ -21,6 +19,7 @@ public class NOTComposite implements BusquedaComponent {
 
 	@Override
 	public List<Proyecto> filtrados(List<Proyecto> proyectos) {
-		return filtro.filtrados(proyectos); // Revisar
+		List<Proyecto> filtrada = filtro.filtrados(proyectos);
+		return proyectos.stream().filter(p -> !filtrada.contains(p)).toList();
 	}
 }
