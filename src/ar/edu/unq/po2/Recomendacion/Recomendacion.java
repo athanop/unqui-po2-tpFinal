@@ -11,6 +11,9 @@ public abstract class Recomendacion {
 	
 	
 	public abstract List<Desafio> seleccionDeDesafios(Usuario usuario);
+	
+	public abstract List<Desafio> ordenarDesafios(Usuario usuario, List<Desafio> desafiosSeleccionados);
+	
 
 	public List<Desafio> ordenarDesafiosPorNivelDeCoincidencia(List<Desafio> desafios, Usuario usuario) {
 		List<Desafio> desafiosOrdenados = new ArrayList<Desafio>();
@@ -21,8 +24,14 @@ public abstract class Recomendacion {
 		return desafiosOrdenados;
 	}
 	
+	public List<Desafio> filtrarYRemoverDesafiosQueYaConoceElUsuarioDeSusProyectosActivos(Usuario usuario, List<Desafio> desafios){
+		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
+		desafiosFiltrados = this.desafiosDeTodosLosProyectosDelUsuario(usuario);
+		desafiosFiltrados = this.removerDesafiosQueYaContieneElUsuario(usuario, desafiosFiltrados);
+		return desafiosFiltrados;
+	}
 	
-	public List<Desafio> removerDesafiosQueYaContieneElUsuario(Usuario usuario, List<Desafio> seleccion) {
+	private List<Desafio> removerDesafiosQueYaContieneElUsuario(Usuario usuario, List<Desafio> seleccion) {
 		List<Desafio> desafiosSeleccionados = new ArrayList<Desafio>();
 		desafiosSeleccionados = seleccion;
 		desafiosSeleccionados.removeAll(filtrarDesafiosQueYaContieneElUsuario(usuario));
@@ -30,13 +39,13 @@ public abstract class Recomendacion {
 		
 	}
 
-	public List<Desafio> filtrarDesafiosQueYaContieneElUsuario(Usuario usuario) {
+	private List<Desafio> filtrarDesafiosQueYaContieneElUsuario(Usuario usuario) {
 		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
 		desafiosFiltrados = usuario.getDesafiosUsuario().stream().map(d -> d.getDesafio()).toList();
 		return desafiosFiltrados;
 		}
 
-	public List<Desafio> desafiosDeTodosLosProyectosDelUsuario(Usuario usuario) {
+	private List<Desafio> desafiosDeTodosLosProyectosDelUsuario(Usuario usuario) {
 		List<Desafio> desafiosDeProyectos = new ArrayList<Desafio>();
 		usuario.
 		getProyectosActivos().
@@ -46,7 +55,7 @@ public abstract class Recomendacion {
 	}
 	
 	
-	public Integer coincidenciasConLasPreferenciasDeUnUsuario(Desafio desafio, Usuario usuario) {
+	private Integer coincidenciasConLasPreferenciasDeUnUsuario(Desafio desafio, Usuario usuario) {
 		Integer valorMuestras   = (Math.abs(usuario.getPreferencia().getCantidadDeMuestras() - desafio.getMuestrasRecolectadas()));
 		Integer valorDificultad = (Math.abs(usuario.getPreferencia().getDificultad() - desafio.getDificultad()));
 		Integer valorRecompensa = (Math.abs(usuario.getPreferencia().getRecompensa() - desafio.getRecompensa()));

@@ -48,7 +48,8 @@ class FavoritoTestCase {
 		
 		
 	}
-
+	/*
+	 
 	@Test
 	void testLaRecomendacionPorFavoritosConoceElDesafioFavoritoDelUsuario() {
 		List<DesafioUsuario> desafiosDelUsuario = new ArrayList<DesafioUsuario>();
@@ -196,8 +197,10 @@ class FavoritoTestCase {
 		assertEquals(favoritos.ordenarVeinteDesafiosPorSimilitudConElDesafioFavoritoDelUsuario(usuario, desafiosAProbar), resultadoOrdenadoEsperado);
 	}
 	
+	*/
+	
 	@Test
-	void testLaSeleccionDeDesafiosFavoritosContiene5DesafiosConMejorCoincidencia() {
+	void testLaSeleccionDeDesafiosFavoritosContiene5DesafiosConMejorCoincidenciaOrdenadosPorSimilitud() {
 		List<DesafioUsuario> desafiosDelUsuario = new ArrayList<DesafioUsuario>();
 
 		when(desafioFavoritoDelUsuario.getValoracion()).thenReturn(5);		

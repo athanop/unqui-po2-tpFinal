@@ -11,10 +11,14 @@ public class PreferenciasEnJuego extends Recomendacion {
 	@Override
 	public List<Desafio> seleccionDeDesafios(Usuario usuario) {
 		List<Desafio> seleccion = new ArrayList<Desafio>();
-		seleccion = this.desafiosDeTodosLosProyectosDelUsuario(usuario);
-		seleccion = this.removerDesafiosQueYaContieneElUsuario(usuario, seleccion);
-		seleccion = this.ordenarDesafiosPorNivelDeCoincidencia(seleccion, usuario);
+		seleccion = this.filtrarYRemoverDesafiosQueYaConoceElUsuarioDeSusProyectosActivos(usuario, seleccion);
+		seleccion = this.ordenarDesafios(usuario, seleccion);
 		return seleccion.stream().limit(5).toList();
+	}
+
+	@Override
+	public List<Desafio> ordenarDesafios(Usuario usuario, List<Desafio> desafiosSeleccionados) {
+		return this.ordenarDesafiosPorNivelDeCoincidencia(desafiosSeleccionados, usuario);
 	}
 
 }

@@ -41,7 +41,7 @@ class PreferenciasEnJuegoTestCase {
 		desafio6 = mock(Desafio.class);
 
 	}
-
+/*
 	@Test
 	void testLaSeleccionDeDesafiosEnUnProyectoQueNoContieneDesafios() {
 		desafiosAProbar = new ArrayList<Desafio>();
@@ -102,7 +102,8 @@ class PreferenciasEnJuegoTestCase {
 		assertEquals(preferenciasEnJuego.ordenarDesafiosPorNivelDeCoincidencia(desafiosAProbar, usuario),
 				resultadoOrdenadoEsperado);
 	}
-
+*/
+	
 	@Test
 	void testLaSeleccionDeDesafiosContiene5DesafiosConMejorNivelDeCoincidencia() {
 
