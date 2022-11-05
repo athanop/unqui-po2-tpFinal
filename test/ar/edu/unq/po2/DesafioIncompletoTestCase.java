@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +29,7 @@ class DesafioIncompletoTestCase {
 	Coordenada coordenada;
 	RestriccionDiasDeSemana restriccion;
 	Area area;
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		desafioIncompleto = new DesafioIncompleto();
@@ -44,26 +43,26 @@ class DesafioIncompletoTestCase {
 
 	@Test
 	void testElDesafioIncompletoSabeSiEstaCompleto() {
-		
+
 		muestrasAProbar = Arrays.asList(muestra);
-		
+
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 
 		when(desafioUsuario.getDesafio()).thenReturn(desafio);
-		
+
 		assertFalse(desafioIncompleto.esDesafioCompleto(desafioUsuario, usuario));
 	}
 
 	@Test
 	void testElDesfioIncompletoConoceSuPorcentajeDeCompletitud() {
-		
+
 		muestrasAProbar = Arrays.asList(muestra);
 		when(desafio.getMuestrasRecolectadas()).thenReturn(4);
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 
 		when(desafioUsuario.getDesafio()).thenReturn(desafio);
-		
+
 		assertEquals(desafioIncompleto.porcentajeDeCompletitud(desafioUsuario, usuario), 25);
 	}
 

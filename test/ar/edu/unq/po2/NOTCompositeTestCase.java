@@ -1,6 +1,7 @@
 package ar.edu.unq.po2;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -10,10 +11,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.BusquedaProyecto.NOTComposite;
 import ar.edu.unq.po2.BusquedaProyecto.BusquedaComponent;
-import ar.edu.unq.po2.BusquedaProyecto.FiltroPorCategoriaInclusion;
 import ar.edu.unq.po2.BusquedaProyecto.FiltroPorTexto;
+import ar.edu.unq.po2.BusquedaProyecto.NOTComposite;
 
 class NOTCompositeTestCase {
 
@@ -26,7 +26,7 @@ class NOTCompositeTestCase {
 	private List<Categoria> catproy1 = new ArrayList<>();
 	private List<Categoria> catproy2 = new ArrayList<>();
 	private List<Categoria> catproy3 = new ArrayList<>();
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		filtro1 = new FiltroPorTexto("Ciencia");
@@ -62,6 +62,7 @@ class NOTCompositeTestCase {
 		when(proy2.getNombre()).thenReturn("Arboles");
 		when(proy3.getNombre()).thenReturn("Ciencia FisicoQuimica");
 	}
+
 	@Test
 	void testNOTComposite() {
 		assertFalse(notc.filtrados(proyectos).contains(proy1));

@@ -1,6 +1,7 @@
 package ar.edu.unq.po2;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -10,10 +11,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.BusquedaProyecto.ORComposite;
 import ar.edu.unq.po2.BusquedaProyecto.BusquedaComponent;
 import ar.edu.unq.po2.BusquedaProyecto.FiltroPorCategoriaInclusion;
 import ar.edu.unq.po2.BusquedaProyecto.FiltroPorTexto;
+import ar.edu.unq.po2.BusquedaProyecto.ORComposite;
 
 class ORCompositeTestCase {
 
