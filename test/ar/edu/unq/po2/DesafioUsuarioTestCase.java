@@ -130,28 +130,28 @@ class DesafioUsuarioTestCase {
 		when(area.coordenadaEstaDentroDelArea(coordenada)).thenReturn(true);
 		
 		restriccion = mock(RestriccionDiasDeSemana.class);
-		when(restriccion.esFechaPermitida(LocalDate.of(2022, 11, 5))).thenReturn(true);
+		when(restriccion.esFechaPermitida(LocalDate.of(2022, 12, 5))).thenReturn(true);
 		
 		when(desafio.getArea()).thenReturn(area);
 		when(desafio.getRestriccion()).thenReturn(restriccion);
 		
-		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2023, 1, 1));
+		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2024, 1, 1));
 		
 		when(muestra.getCoordenada()).thenReturn(coordenada);
-		when(muestra.getFechaYHora()).thenReturn(LocalDate.of(2022, 11, 5));
+		when(muestra.getFechaYHora()).thenReturn(LocalDate.of(2022, 12, 5));
 		when(muestra.getUsuario()).thenReturn(usuario);
 		
 		when(muestra2.getCoordenada()).thenReturn(coordenada);
-		when(muestra2.getFechaYHora()).thenReturn(LocalDate.of(2023, 11, 5));
+		when(muestra2.getFechaYHora()).thenReturn(LocalDate.of(2023, 12, 5));
 		when(muestra2.getUsuario()).thenReturn(usuario);
 		
-		muestrasAProbar = Arrays.asList(muestra, muestra2);
+		muestrasAProbar = Arrays.asList(muestra);
+
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		
 		
 		assertEquals(desafioUsuario.muestrasValidas(usuario), 1);
 
-	
 	}
 	
 	
