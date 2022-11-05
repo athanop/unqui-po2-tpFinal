@@ -26,9 +26,7 @@ public class ORComposite implements BusquedaComponent {
 	public List<Proyecto> filtrados(List<Proyecto> proyectos) {
 		List<Proyecto> filtrados1 = filtro1.filtrados(proyectos);
 		List<Proyecto> filtrados2 = filtro2.filtrados(proyectos);
-		List<Proyecto> filtradosOr = new ArrayList<Proyecto>(filtrados1); // Al resultado final se le agregan los
-																			// elementos que cumplen la primera
-																			// condicion
+		List<Proyecto> filtradosOr = new ArrayList<Proyecto>(filtrados1); // Al resultado final se le agregan los elementos que cumplen la primera condicion
 		filtrados2.removeAll(filtrados1); // Se quitan los repetidos que pueda haber entre ambas condiciones
 		filtradosOr.addAll(filtrados2); // Se agregan los elementos que cumplen la segunda condicion
 		return filtradosOr;

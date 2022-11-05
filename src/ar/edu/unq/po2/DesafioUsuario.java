@@ -120,11 +120,15 @@ public class DesafioUsuario {
 	 * @param muestra representa a una Muestra
 	 * @return True si la muestra cumple con la fecha de aceptacion, la restriccion temporal y el area correspondiente al desafio
 	 */
-	private boolean muestraDentroDeAreaYFecha(Muestra muestra) { // Falta validar fecha desde cuando se puede enviar muestra
+	private boolean muestraDentroDeAreaYFecha(Muestra muestra) {
 		return (muestra.getFechaYHora().isAfter(this.getFechaAceptacion())) && (this.getDesafio().getRestriccion().esFechaPermitida(muestra.getFechaYHora())) && (this.getDesafio().getArea().coordenadaEstaDentroDelArea(muestra.getCoordenada()));
 	}
 	
-	
+	/**
+	 * Devuelve la cantidad de muestras de un Usuario que se encuentran dentro de la fecha y area permitidas por el desafio y fue enviada luego de aceptar el desafio.
+	 * @param usuario representa un Usuario.
+	 * @return un numero entero, la cantidad de muestras validas.
+	 */
 	public Integer muestrasValidas(Usuario usuario) {
 		return usuario.getMuestrasRecolectadas().stream().filter(m -> this.muestraDentroDeAreaYFecha(m)).toList().size();
 	}

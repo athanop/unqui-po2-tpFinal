@@ -30,11 +30,11 @@ public class RestriccionComposite implements RestriccionTemporal {
 	}
 	
 	public void agregarRestriccion(RestriccionTemporal restriccion) {
-		this.getRestricciones().add(restriccion);
+		this.restricciones.add(restriccion);
 	}
 
 	public void eliminarRestriccion(RestriccionTemporal restriccion) {
-		this.getRestricciones().remove(restriccion);
+		this.restricciones.remove(restriccion);
 	}
 
 }
