@@ -129,4 +129,7 @@ public class DesafioUsuario {
 		return usuario.getMuestrasRecolectadas().stream().filter(m -> this.muestraDentroDeAreaYFecha(m)).toList().size();
 	}
 	
+	public Integer porcentajeDeCompletitud(Usuario usuario) {
+		return this.getEstado().porcentajeDeCompletitud(this, usuario);
+	}
 }

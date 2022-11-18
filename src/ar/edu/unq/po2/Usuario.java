@@ -118,5 +118,21 @@ public class Usuario {
 			this.proyectosActivos.add(proyecto);
 		}
 	}
+	
+	/**
+	 * Calcula el promedio de completitud de cada desafio aceptado por el usuario.
+	 * @return el promedio de completitud de los desafios aceptados por el usuario.
+	 */
+	public Integer promedioDeCompletitudPorDesafio() {
+		return this.getDesafiosUsuario().stream().mapToInt(d -> d.porcentajeDeCompletitud(this)).sum();
+	}
+
+	/**
+	 * Calcula el promedio de completitud general de desafios aceptados por el usuario.
+	 * @return el promedio de completitud general de los desafios aceptados por el usuario.
+	 */
+	public Integer promedioDeCompletitudGeneral() {
+		return this.promedioDeCompletitudPorDesafio() / this.getDesafiosUsuario().size();
+	}
 
 }
