@@ -157,4 +157,17 @@ class DesafioUsuarioTestCase {
 	}
 	
 	
+	@Test
+	void testUnDesafioUsuarioConoceElPorcentajeDeCompletitudDelDesafioDeUnUsuario() {
+		muestrasAProbar = Arrays.asList(muestra);
+		when(desafio.getMuestrasRecolectadas()).thenReturn(2); 
+		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
+		
+		desafioUsuario = new DesafioUsuario(desafio, 3,  LocalDate.of(2022, 1, 1));
+		
+		
+		assertEquals(desafioUsuario.porcentajeDeCompletitud(usuario), 50);
+	}
+	
+	
 }

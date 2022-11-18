@@ -116,7 +116,7 @@ public class DesafioUsuario {
 	 * @param muestra representa a una Muestra
 	 * @return True si la muestra cumple con la fecha de aceptacion, la restriccion temporal y el area correspondiente al desafio
 	 */
-	private boolean muestraDentroDeAreaYFecha(Muestra muestra) {
+	public boolean muestraDentroDeAreaYFecha(Muestra muestra) {
 		return (muestra.getFechaYHora().isAfter(this.getFechaAceptacion())) && (this.getDesafio().getRestriccion().esFechaPermitida(muestra.getFechaYHora())) && (this.getDesafio().getArea().coordenadaEstaDentroDelArea(muestra.getCoordenada()));
 	}
 	

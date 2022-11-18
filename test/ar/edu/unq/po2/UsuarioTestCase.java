@@ -1,16 +1,17 @@
 package ar.edu.unq.po2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.Area.Area;
+import ar.edu.unq.po2.Area.Coordenada;
 import ar.edu.unq.po2.Recomendacion.PreferenciasEnJuego;
 
 class UsuarioTestCase {
@@ -18,12 +19,15 @@ class UsuarioTestCase {
 	Usuario usuario;
 	Preferencia preferencia;
 	DesafioUsuario desafioUsuario, desafioUsuario2;
-	Muestra muestra1, muestra2;
+	Muestra muestra1, muestra2, muestra3;
 	Proyecto proyecto, proyecto2;
 	PreferenciasEnJuego recomendacionPreferenciasEnJuego;
+	Desafio desafio1, desafio2;
 
 	@BeforeEach
 	void setUp() throws Exception {
+		desafio1 = mock(Desafio.class);
+		desafio2 = mock(Desafio.class);
 		preferencia = mock(Preferencia.class);
 		desafioUsuario = mock(DesafioUsuario.class);
 		desafioUsuario2 = mock(DesafioUsuario.class);
@@ -32,6 +36,7 @@ class UsuarioTestCase {
 		proyecto2 = mock(Proyecto.class);
 		muestra1 = mock(Muestra.class);
 		muestra2 = mock(Muestra.class);
+		muestra3 = mock(Muestra.class);
 		usuario = new Usuario(preferencia);
 	}
 
@@ -83,4 +88,32 @@ class UsuarioTestCase {
 		verify(desafioUsuario).actualizarDesafio(usuario);
 		
 	}
+	
+	@Test
+	void testUnUsuarioConoceLaSumatoriaDeCompletitudPorDesafio() throws Exception{
+		
+		usuario = new Usuario(preferencia);
+		when(desafioUsuario.porcentajeDeCompletitud(usuario)).thenReturn(33);
+		when(desafioUsuario2.porcentajeDeCompletitud(usuario)).thenReturn(11);
+
+		usuario.aceptarDesafio(desafioUsuario);
+		usuario.aceptarDesafio(desafioUsuario2);
+		
+		assertEquals(usuario.promedioDeCompletitudPorDesafio(), 44);
+	}
+	
+	
+	@Test
+	void testUnUsuarioConoceElPromedioGeneralDeSusDesafios() throws Exception{
+		
+		usuario = new Usuario(preferencia);
+		when(desafioUsuario.porcentajeDeCompletitud(usuario)).thenReturn(33);
+		when(desafioUsuario2.porcentajeDeCompletitud(usuario)).thenReturn(11);
+
+		usuario.aceptarDesafio(desafioUsuario);
+		usuario.aceptarDesafio(desafioUsuario2);
+		
+		assertEquals(usuario.promedioDeCompletitudGeneral(), 22);
+	}
+	
 }
