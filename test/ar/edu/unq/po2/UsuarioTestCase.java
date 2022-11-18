@@ -76,4 +76,11 @@ class UsuarioTestCase {
 		verify(recomendacionPreferenciasEnJuego, times(1)).seleccionDeDesafios(usuario);
 	}
 
+	@Test
+	void testUnUsuarioAgregaUnaMuestraYNotificaATodosLosDesafiosAceptadosPorElUsuario() throws Exception {
+		usuario.aceptarDesafio(desafioUsuario);
+		usuario.agregarMuestra(muestra1);
+		verify(desafioUsuario).actualizarDesafio(usuario);
+		
+	}
 }
