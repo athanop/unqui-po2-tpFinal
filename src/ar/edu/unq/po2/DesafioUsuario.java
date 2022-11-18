@@ -91,12 +91,8 @@ public class DesafioUsuario {
 	 * Realiza la votacion del usuario hacia el desafio que acepto.
 	 * @param valoracion, el usuario puede votar cuanto le gusto realizar este desafio indicando un valor entre 0 y 5, donde 0 significa que no le gusto nada y 5 que le gusto mucho
 	 */
-	public void votoDelUsuario(Usuario usuario, Integer valoracion) throws Exception {
-		if (estado.esDesafioCompleto(this, usuario) && valoracion <= 5) {
-			this.setValoracion(valoracion);
-		} else {
-			throw new Exception("la valoracion debe ser de 0 a 5");
-		}
+	public void votoDelUsuario(Integer valoracion) throws Exception {
+		estado.setearValoracion(this, valoracion);
 	}
 
 	/**
@@ -129,7 +125,7 @@ public class DesafioUsuario {
 	 * @param usuario representa un Usuario.
 	 * @return un numero entero, la cantidad de muestras validas.
 	 */
-	public Integer muestrasValidas(Usuario usuario) {
+	public Integer cantidadDeMuestrasValidas(Usuario usuario) {
 		return usuario.getMuestrasRecolectadas().stream().filter(m -> this.muestraDentroDeAreaYFecha(m)).toList().size();
 	}
 	

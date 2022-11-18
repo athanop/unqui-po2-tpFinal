@@ -51,7 +51,7 @@ class DesafioCompletoTestCase {
 		
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
 		
-		when(desafioUsuario.muestrasValidas(usuario)).thenReturn(1);
+		when(desafioUsuario.cantidadDeMuestrasValidas(usuario)).thenReturn(1);
 		when(desafioUsuario.getDesafio()).thenReturn(desafio);
 		when(desafioUsuario.getFechaAceptacion()).thenReturn(LocalDate.now());
 		

@@ -67,7 +67,7 @@ class UsuarioTestCase {
 	@Test
 	void testUnUsuarioSabeRealizarUnaVotacionAUnDesafio() throws Exception {
 		usuario.votarDesafio(desafioUsuario, 5);
-		verify(desafioUsuario, times(1)).votoDelUsuario(usuario, 5);
+		verify(desafioUsuario, times(1)).votoDelUsuario(5);
 	}
 
 	@Test

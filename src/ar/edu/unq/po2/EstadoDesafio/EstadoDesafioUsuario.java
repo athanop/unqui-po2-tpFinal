@@ -30,4 +30,7 @@ public interface EstadoDesafioUsuario {
 	 * @param usuario, es el usuario que debe completar el desafio.
 	 */
 	public void actualizarDesafio(DesafioUsuario desafio, Usuario usuario) throws Exception;
+	
+	public void setearValoracion(DesafioUsuario desafioUsuario, Integer valoracion) throws Exception;
+	
 }

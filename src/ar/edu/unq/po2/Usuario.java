@@ -69,9 +69,7 @@ public class Usuario {
 	 * @return desafiosFiltrados, una lista de desafios que cumplen la recomendacion dada.
 	 */
 	public List<Desafio> buscarDesafios(Recomendacion recomendacion) {
-		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
-		desafiosFiltrados.addAll(recomendacion.seleccionDeDesafios(this));
-		return desafiosFiltrados;
+		return recomendacion.seleccionDeDesafios(this);
 	}
 
 	/**
@@ -79,9 +77,7 @@ public class Usuario {
 	 * @param desafioUsuario, el desafio que esta aceptando el usuario.
 	 */
 	public void aceptarDesafio(DesafioUsuario desafioUsuario) throws Exception {
-		if (!this.getDesafiosUsuario().contains(desafioUsuario)) {
 			getDesafiosUsuario().add(desafioUsuario);
-		}
 	}
 
 	/**
@@ -90,7 +86,7 @@ public class Usuario {
 	 * @param valoracion, el usuario puede votar cuanto le gusto realizar este desafio indicando un valor entre 0 y 5, donde 0 significa que no le gusto nada y 5 que le gusto mucho
 	 */
 	public void votarDesafio(DesafioUsuario desafioUsuario, Integer valoracion) throws Exception {
-		desafioUsuario.votoDelUsuario(this, valoracion);
+		desafioUsuario.votoDelUsuario(valoracion);
 	}
 
 	/**
@@ -98,7 +94,7 @@ public class Usuario {
 	 * @param muestra, es la muestra enviada por el usuario.
 	 */
 	public void agregarMuestra(Muestra muestra) {
-		if (!this.muestrasRecolectadas.contains(muestra))
+		//notificar a los desafios q llego una nueva muestra
 			this.muestrasRecolectadas.add(muestra);
 	}
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase que modela el sistema. Es patron singleton
+ * Clase que modela el sistema.
  * 
  */
 public class Sistema {
@@ -12,7 +12,6 @@ public class Sistema {
 	 * Un sistema a representar. Una lista de todos los proyectos del sistema. Una
 	 * lista de todas las categorias del sistema.
 	 */
-	private static Sistema sistema;
 	private List<Proyecto> proyectos;
 	private List<Categoria> categorias;
 
@@ -24,17 +23,7 @@ public class Sistema {
 		this.categorias = new ArrayList<Categoria>();
 	}
 
-	/**
-	 * Obtiene la unica instancia posible de Sistema, si no existe la crea.
-	 * 
-	 * @return
-	 */
-	public static Sistema getSistema() {
-		if (sistema == null) {
-			sistema = new Sistema();
-		}
-		return sistema;
-	}
+	
 
 	/**
 	 * Obtiene la lista de Proyectos que hay en el Sistema.

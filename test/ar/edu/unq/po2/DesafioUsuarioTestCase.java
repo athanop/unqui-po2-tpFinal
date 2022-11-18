@@ -21,7 +21,7 @@ import ar.edu.unq.po2.RestriccionTemporal.RestriccionDiasDeSemana;
 
 class DesafioUsuarioTestCase {
 
-	DesafioUsuario desafioUsuario;
+	DesafioUsuario desafioUsuario, desafioUsuario1;
 	Usuario usuario;
 	Desafio desafio;
 	DesafioIncompleto estadoIncompleto;
@@ -58,7 +58,7 @@ class DesafioUsuarioTestCase {
 	@Test
 	void testUnDesafioUsuarioIndicaCuandoUnaValoracionEsInvalida() throws Exception {
 		desafioUsuario = new DesafioUsuario(desafio, 3,  LocalDate.of(2022, 1, 1));
-		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(usuario, 6));
+		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(6));
 	}
 	
 	
@@ -99,14 +99,16 @@ class DesafioUsuarioTestCase {
 	
 	@Test
 	void testUnDesafioUsuarioRecibeUnaValoracionDeUnUsuario() throws Exception {
-
 		muestrasAProbar = Arrays.asList(muestra, muestra2);
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
+		
+		desafioUsuario1 = new DesafioUsuario(desafio, 1,  LocalDate.of(2022, 1, 1));
+		desafioUsuario1.actualizarDesafio(usuario);
+		
+		desafioUsuario1.votoDelUsuario(5);
 
-		desafioUsuario.votoDelUsuario(usuario, 5);
-
-		assertEquals(desafioUsuario.getValoracion(), 5);
+		assertEquals(desafioUsuario1.getValoracion(), 5);
 	}
 
 	
@@ -117,7 +119,7 @@ class DesafioUsuarioTestCase {
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
 
-		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(usuario, 6));
+		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(6));
 	}
 	
 	
@@ -150,7 +152,7 @@ class DesafioUsuarioTestCase {
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		
 		
-		assertEquals(desafioUsuario.muestrasValidas(usuario), 1);
+		assertEquals(desafioUsuario.cantidadDeMuestrasValidas(usuario), 1);
 
 	}
 	
