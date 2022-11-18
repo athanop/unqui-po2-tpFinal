@@ -49,7 +49,7 @@ class UsuarioTestCase {
 	}
 
 	@Test
-	void testUnUsuarioConoceCualesSonSusMuestrasRecolectadas() {
+	void testUnUsuarioConoceCualesSonSusMuestrasRecolectadas() throws Exception {
 		List<Muestra> muestras = Arrays.asList(muestra1, muestra2);
 		usuario.agregarMuestra(muestra1);
 		usuario.agregarMuestra(muestra2);

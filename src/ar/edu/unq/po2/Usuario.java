@@ -93,9 +93,10 @@ public class Usuario {
 	 * Agrega una muestra.
 	 * @param muestra, es la muestra enviada por el usuario.
 	 */
-	public void agregarMuestra(Muestra muestra) {
+	public void agregarMuestra(Muestra muestra) throws Exception {
 		//notificar a los desafios q llego una nueva muestra
 			this.muestrasRecolectadas.add(muestra);
+			this.getDesafiosUsuario().stream().forEach(d -> d.actualizarDesafio(this));
 	}
 
 	/**

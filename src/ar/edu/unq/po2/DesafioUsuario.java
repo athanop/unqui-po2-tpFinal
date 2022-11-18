@@ -98,7 +98,7 @@ public class DesafioUsuario {
 	/**
 	 * Actualiza el estado del desafio aceptado por el usuario.
 	 */
-	public void actualizarDesafio(Usuario usuario) throws Exception{
+	public void actualizarDesafio(Usuario usuario) throws Exception {
 		this.estado.actualizarDesafio(this, usuario);
 	}
 	
