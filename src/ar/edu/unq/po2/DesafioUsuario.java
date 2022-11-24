@@ -65,6 +65,10 @@ public class DesafioUsuario {
 		return fechaAceptacion;
 	}
 	
+	public void setFechaAceptacion(LocalDate fecha) {
+		this.fechaAceptacion = fecha;
+	}
+	
 	/**
 	 * Describe la fecha cuando se completo el desafio.
 	 * @return la fecha cuando el usuario completa el desafio.
@@ -81,10 +85,10 @@ public class DesafioUsuario {
 	 */
 	public DesafioUsuario(Desafio desafio, Integer valoracion, LocalDate fechaCompletitud) {
 		this.desafio = desafio;
-		this.valoracion = valoracion;
-		this.estado = new DesafioIncompleto();
-		this.fechaAceptacion = LocalDate.now();
-		this.fechaCompletitud = fechaCompletitud;
+		this.setValoracion(valoracion);
+		this.setEstado(new DesafioIncompleto());
+		this.setFechaAceptacion(LocalDate.now());
+		this.setFechaCompletitud(fechaCompletitud);
 	}
 	
 	/**

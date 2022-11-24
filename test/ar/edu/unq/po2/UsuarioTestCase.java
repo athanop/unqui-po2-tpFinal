@@ -3,15 +3,12 @@ package ar.edu.unq.po2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.Area.Area;
-import ar.edu.unq.po2.Area.Coordenada;
 import ar.edu.unq.po2.Recomendacion.PreferenciasEnJuego;
 
 class UsuarioTestCase {

@@ -3,8 +3,7 @@ package ar.edu.unq.po2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -31,6 +30,7 @@ class DesafioUsuarioTestCase {
 	Coordenada coordenada;
 	RestriccionDiasDeSemana restriccion;
 	Area area;
+	LocalDate fecha;
 	@BeforeEach
 	void setUp() throws Exception {
 		coordenada = mock(Coordenada.class);
@@ -41,6 +41,7 @@ class DesafioUsuarioTestCase {
 		desafioUsuario = new DesafioUsuario(desafio, 3,  LocalDate.of(2022, 1, 1));
 		muestra = mock(Muestra.class);
 		muestra2 = mock(Muestra.class);
+		restriccion = mock(RestriccionDiasDeSemana.class);
 	}
 
 
@@ -61,7 +62,11 @@ class DesafioUsuarioTestCase {
 		assertThrows(Exception.class, () -> desafioUsuario.votoDelUsuario(6));
 	}
 	
-	
+	@Test
+	void testUnDesafioUsuarioConoceSuFechaDeCompletitud() {
+		desafioUsuario.setFechaCompletitud(LocalDate.now());
+		assertEquals(desafioUsuario.getFechaCompletitud(), LocalDate.now());
+	}
 	
 	@Test
 	void testUnDesafioUsuarioSabeCuandoSeActualizaSuEstado() throws Exception {
@@ -125,18 +130,6 @@ class DesafioUsuarioTestCase {
 	
 	@Test 
 	void unDesafioDeUsuarioConoceLaCantidadDeMuestrasValidasDeUnUsuario(){
-		when(coordenada.getLatitud()).thenReturn(0d);
-		when(coordenada.getLongitud()).thenReturn(0d);
-		
-		area = mock(Area.class);
-		when(area.coordenadaEstaDentroDelArea(coordenada)).thenReturn(true);
-		
-		restriccion = mock(RestriccionDiasDeSemana.class);
-		when(restriccion.esFechaPermitida(LocalDate.of(2022, 12, 5))).thenReturn(true);
-		
-		when(desafio.getArea()).thenReturn(area);
-		when(desafio.getRestriccion()).thenReturn(restriccion);
-		
 		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2024, 1, 1));
 		
 		when(muestra.getCoordenada()).thenReturn(coordenada);
@@ -147,7 +140,12 @@ class DesafioUsuarioTestCase {
 		when(muestra2.getFechaYHora()).thenReturn(LocalDate.of(2023, 12, 5));
 		when(muestra2.getUsuario()).thenReturn(usuario);
 		
-		muestrasAProbar = Arrays.asList(muestra);
+		when(desafioUsuario.muestraDentroDeArea(muestra)).thenReturn(true);
+		when(desafioUsuario.muestraDentroDeArea(muestra2)).thenReturn(true);
+		when(desafioUsuario.muestraDentroDeRestriccionTemporal(muestra)).thenReturn(true);
+		when(desafioUsuario.muestraDentroDeRestriccionTemporal(muestra2)).thenReturn(false);
+		
+		muestrasAProbar = Arrays.asList(muestra, muestra2);
 
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		
@@ -156,6 +154,24 @@ class DesafioUsuarioTestCase {
 
 	}
 	
+	@Test
+	void testUnDesafioDeUsuarioValidaUnaMuestra() {
+		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2024, 1, 1));
+		
+		when(desafio.coordenadaCumpleAreaDesafio(coordenada)).thenReturn(true);
+		when(desafio.fechaCumpleRestriccionTemporal(fecha)).thenReturn(true);
+		
+		when(muestra.getCoordenada()).thenReturn(coordenada);
+		assertTrue(desafioUsuario.muestraDentroDeArea(muestra));
+		
+		when(muestra.getFechaYHora()).thenReturn(LocalDate.of(2022, 12, 5));
+		assertTrue(desafioUsuario.muestraDentroDeFecha(muestra));
+		
+		assertTrue(desafioUsuario.muestraDentroDeRestriccionTemporal(muestra));
+	
+		assertTrue(desafioUsuario.muestraDentroDeAreaYFecha(muestra));
+	}
+
 	
 	@Test
 	void testUnDesafioUsuarioConoceElPorcentajeDeCompletitudDelDesafioDeUnUsuario() {
