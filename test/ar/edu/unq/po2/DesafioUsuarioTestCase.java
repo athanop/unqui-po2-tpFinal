@@ -149,29 +149,47 @@ class DesafioUsuarioTestCase {
 
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 		
-		
+		assertTrue(desafioUsuario.muestraDentroDeAreaYFecha(muestra));
 		assertEquals(desafioUsuario.cantidadDeMuestrasValidas(usuario), 1);
 
 	}
 	
 	@Test
-	void testUnDesafioDeUsuarioValidaUnaMuestra() {
+	void testUnDesafioDeUsuarioValidaUnaMuestraPorArea() {
 		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2024, 1, 1));
-		
 		when(desafio.coordenadaCumpleAreaDesafio(coordenada)).thenReturn(true);
+		when(muestra.getCoordenada()).thenReturn(coordenada);
+		
+		assertTrue(desafioUsuario.muestraDentroDeArea(muestra));
+	}
+	
+	@Test
+	void testUnDesafioDeUsuarioValidaUnaMuestraPorFecha() {
+		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2024, 1, 1));
+		when(muestra.getFechaYHora()).thenReturn(LocalDate.of(2022, 12, 5));
+		
+		assertTrue(desafioUsuario.muestraDentroDeFecha(muestra));
+	}
+	
+	@Test
+	void testUnDesafioDeUsuarioValidaUnaMuestraPorRestriccionTemporal() {
+		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2024, 1, 1));
 		when(desafio.fechaCumpleRestriccionTemporal(fecha)).thenReturn(true);
 		
-		when(muestra.getCoordenada()).thenReturn(coordenada);
-		assertTrue(desafioUsuario.muestraDentroDeArea(muestra));
-		
-		when(muestra.getFechaYHora()).thenReturn(LocalDate.of(2022, 12, 5));
-		assertTrue(desafioUsuario.muestraDentroDeFecha(muestra));
-		
 		assertTrue(desafioUsuario.muestraDentroDeRestriccionTemporal(muestra));
+	}
 	
+	@Test
+	void testUnDesafioDeUsuarioValidaUnaMuestra() {
+		desafioUsuario = new DesafioUsuario(desafio, 3, LocalDate.of(2024, 1, 1));
+		when(muestra.getCoordenada()).thenReturn(coordenada);
+		when(muestra.getFechaYHora()).thenReturn(LocalDate.of(2022, 12, 5));
+		when(muestra.getUsuario()).thenReturn(usuario);
+		when(desafioUsuario.muestraDentroDeArea(muestra)).thenReturn(true);
+		when(desafioUsuario.muestraDentroDeRestriccionTemporal(muestra)).thenReturn(true);
+		
 		assertTrue(desafioUsuario.muestraDentroDeAreaYFecha(muestra));
 	}
-
 	
 	@Test
 	void testUnDesafioUsuarioConoceElPorcentajeDeCompletitudDelDesafioDeUnUsuario() {
