@@ -1,6 +1,9 @@
 package ar.edu.unq.po2;
 
+import java.time.LocalDate;
+
 import ar.edu.unq.po2.Area.Area;
+import ar.edu.unq.po2.Area.Coordenada;
 import ar.edu.unq.po2.RestriccionTemporal.RestriccionTemporal;
 
 /**
@@ -75,5 +78,23 @@ public class Desafio {
 		this.recompensa = recompensa;
 		this.restriccion = restriccion;
 		this.area = area;
+	}
+	
+	/**
+	 * Indica si la fecha dada se encuentra dentro de la fecha de restriccion temporal permitida.
+	 * @param fecha representa a una LocalDate.
+	 * @return True si la fecha cumple con la restriccion temporal correspondiente al desafio.
+	 */
+	public boolean fechaCumpleRestriccionTemporal(LocalDate fecha) {
+		return this.getRestriccion().esFechaPermitida(fecha);
+	}
+	
+	/**
+	 * Indica si la coordenada dada se encuentra dentro del area permitida por el desafio.
+	 * @param coord representa a una Coordenada
+	 * @return True si la coord cumple con el area correspondiente al desafio.
+	 */
+	public boolean coordenadaCumpleAreaDesafio(Coordenada coord) {
+		return this.getArea().coordenadaEstaDentroDelArea(coord);
 	}
 }

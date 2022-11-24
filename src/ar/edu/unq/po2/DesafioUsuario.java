@@ -114,10 +114,37 @@ public class DesafioUsuario {
 	/**
 	 * Indica si la muestra dada se encuentra dentro de la fecha y area permitidas por el desafio y fue enviada luego de aceptar el desafio.
 	 * @param muestra representa a una Muestra
-	 * @return True si la muestra cumple con la fecha de aceptacion, la restriccion temporal y el area correspondiente al desafio
+	 * @return True si la muestra cumple con la fecha de aceptacion, la restriccion temporal y el area correspondiente al desafio.
 	 */
 	public boolean muestraDentroDeAreaYFecha(Muestra muestra) {
-		return (muestra.getFechaYHora().isAfter(this.getFechaAceptacion())) && (this.getDesafio().getRestriccion().esFechaPermitida(muestra.getFechaYHora())) && (this.getDesafio().getArea().coordenadaEstaDentroDelArea(muestra.getCoordenada()));
+		return this.muestraDentroDeFecha(muestra) && this.muestraDentroDeRestriccionTemporal(muestra) && this.muestraDentroDeArea(muestra);
+	}
+	
+	/**
+	 * Indica si la muestra dada es posterior a la fecha de aceptacion del desafio.
+	 * @param muestra representa a una Muestra
+	 * @return True si la muestra cumple con la fecha de aceptacion correspondiente al desafio.
+	 */
+	public boolean muestraDentroDeFecha(Muestra muestra) {
+		return muestra.getFechaYHora().isAfter(this.getFechaAceptacion());
+	}
+	
+	/**
+	 * Indica si la muestra dada se encuentra dentro de la fecha de restriccion temporal permitida.
+	 * @param muestra representa a una Muestra
+	 * @return True si la muestra cumple con la restriccion temporal correspondiente al desafio.
+	 */
+	public boolean muestraDentroDeRestriccionTemporal(Muestra muestra) {
+		return this.getDesafio().fechaCumpleRestriccionTemporal(muestra.getFechaYHora());
+	}
+	
+	/**
+	 * Indica si la muestra dada se encuentra dentro del area permitida por el desafio.
+	 * @param muestra representa a una Muestra
+	 * @return True si la muestra cumple con el area correspondiente al desafio.
+	 */
+	public boolean muestraDentroDeArea(Muestra muestra) {
+		return this.getDesafio().coordenadaCumpleAreaDesafio(muestra.getCoordenada());
 	}
 	
 	/**
@@ -129,6 +156,11 @@ public class DesafioUsuario {
 		return usuario.getMuestrasRecolectadas().stream().filter(m -> this.muestraDentroDeAreaYFecha(m)).toList().size();
 	}
 	
+	/**
+	 * Devuelve el porcentaje de completitud que tiene un Usuario sobre el desafio.
+	 * @param usuario representa un Usuario.
+	 * @return un numero entero, el porcentaje de completitud.
+	 */
 	public Integer porcentajeDeCompletitud(Usuario usuario) {
 		return this.getEstado().porcentajeDeCompletitud(this, usuario);
 	}
