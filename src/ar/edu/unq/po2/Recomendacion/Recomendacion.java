@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import ar.edu.unq.po2.Desafio;
+import ar.edu.unq.po2.Sistema;
 import ar.edu.unq.po2.Usuario;
 
 public abstract class Recomendacion {
 	
 	
-	public abstract List<Desafio> seleccionDeDesafios(Usuario usuario);
+	public abstract List<Desafio> seleccionDeDesafios(Sistema sistema, Usuario usuario);
 	
 	public abstract List<Desafio> ordenarDesafios(Usuario usuario, List<Desafio> desafiosSeleccionados);
 	
@@ -24,9 +25,9 @@ public abstract class Recomendacion {
 		return desafiosOrdenados;
 	}
 	
-	public List<Desafio> filtrarYRemoverDesafiosQueYaConoceElUsuarioDeSusProyectosActivos(Usuario usuario, List<Desafio> desafios){
+	public List<Desafio> filtrarYRemoverDesafiosQueYaConoceElUsuario(Sistema sistema, Usuario usuario, List<Desafio> desafios){
 		List<Desafio> desafiosFiltrados = new ArrayList<Desafio>();
-		desafiosFiltrados = this.desafiosDeTodosLosProyectosDelUsuario(usuario);
+		desafiosFiltrados = this.desafiosDeTodosLosProyectosDelSistema(sistema, usuario);
 		desafiosFiltrados = this.removerDesafiosQueYaContieneElUsuario(usuario, desafiosFiltrados);
 		return desafiosFiltrados;
 	}
@@ -45,10 +46,10 @@ public abstract class Recomendacion {
 		return desafiosFiltrados;
 		}
 
-	private List<Desafio> desafiosDeTodosLosProyectosDelUsuario(Usuario usuario) {
+	private List<Desafio> desafiosDeTodosLosProyectosDelSistema(Sistema sistema, Usuario usuario) {
 		List<Desafio> desafiosDeProyectos = new ArrayList<Desafio>();
-		usuario.
-		getProyectosActivos().
+		sistema.
+		getProyectosDeUsuario(usuario).
 		stream().
 		forEach(p -> desafiosDeProyectos.addAll(p.getDesafios())); 
 		return desafiosDeProyectos;

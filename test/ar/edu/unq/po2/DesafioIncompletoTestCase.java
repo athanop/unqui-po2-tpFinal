@@ -50,7 +50,7 @@ class DesafioIncompletoTestCase {
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 
 		when(desafioUsuario.getDesafio()).thenReturn(desafio);
-
+		when(desafioUsuario.cantidadMuestrasRecolectadasEnElDesafio()).thenReturn(2);
 		assertFalse(desafioIncompleto.esDesafioCompleto(desafioUsuario, usuario));
 	}
 
@@ -62,7 +62,7 @@ class DesafioIncompletoTestCase {
 		when(usuario.getMuestrasRecolectadas()).thenReturn(muestrasAProbar);
 
 		when(desafioUsuario.getDesafio()).thenReturn(desafio);
-
+		when(desafioUsuario.cantidadMuestrasRecolectadasEnElDesafio()).thenReturn(4);
 		assertEquals(desafioIncompleto.porcentajeDeCompletitud(desafioUsuario, usuario), 25);
 	}
 

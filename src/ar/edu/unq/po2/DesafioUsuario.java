@@ -168,4 +168,12 @@ public class DesafioUsuario {
 	public Integer porcentajeDeCompletitud(Usuario usuario) {
 		return this.getEstado().porcentajeDeCompletitud(this, usuario);
 	}
+	
+	public Integer cantidadMuestrasRecolectadasEnElDesafio() {
+		return this.getDesafio().getMuestrasRecolectadas();
+	}
+	
+	
+	
+	
 }

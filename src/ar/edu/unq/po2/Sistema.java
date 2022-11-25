@@ -1,7 +1,9 @@
 package ar.edu.unq.po2;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Clase que modela el sistema.
@@ -59,5 +61,11 @@ public class Sistema {
 	 */
 	public void agregarCategoria(Categoria categoria) {
 		categorias.add(categoria);
+	}
+
+
+
+	public List<Proyecto> getProyectosDeUsuario(Usuario usuario) {
+		return this.getProyectos().stream().filter(p -> p.getUsuarios().contains(usuario)).collect(Collectors.toList());
 	}
 }

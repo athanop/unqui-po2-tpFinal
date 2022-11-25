@@ -23,11 +23,11 @@ class FavoritoTestCase {
 	List<Proyecto> proyectosAProbar;
 	DesafioUsuario desafioFavoritoDelUsuario, desafioDelUsuario2, desafioDelUsuario3, desafioDelUsuario4,desafioDelUsuario5;
 	Usuario usuario;
-	
+	Sistema sistema;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-	
+		sistema = mock(Sistema.class);
 		favoritos = new Favoritos();
 		usuario = mock(Usuario.class);
 		preferencia = mock(Preferencia.class);
@@ -103,10 +103,10 @@ class FavoritoTestCase {
 		desafiosAProbar = Arrays.asList(desafio4, desafio2, desafio3, desafio5, desafio6, desafio7);	
 		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
 		proyectosAProbar = Arrays.asList(proyecto);
-		when(usuario.getProyectosActivos()).thenReturn(proyectosAProbar);
+		when(sistema.getProyectosDeUsuario(usuario)).thenReturn(proyectosAProbar);
 			
 		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio4, desafio5, desafio3, desafio2, desafio7);
 		
-		assertEquals(favoritos.seleccionDeDesafios(usuario), resultadoOrdenadoEsperado);
+		assertEquals(favoritos.seleccionDeDesafios(sistema, usuario), resultadoOrdenadoEsperado);
 	}
 }

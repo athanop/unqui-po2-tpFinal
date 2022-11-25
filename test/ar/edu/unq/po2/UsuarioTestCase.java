@@ -20,7 +20,9 @@ class UsuarioTestCase {
 	Proyecto proyecto, proyecto2;
 	PreferenciasEnJuego recomendacionPreferenciasEnJuego;
 	Desafio desafio1, desafio2;
-
+	Sistema sistema;
+	
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		desafio1 = mock(Desafio.class);
@@ -58,13 +60,6 @@ class UsuarioTestCase {
 		assertEquals(usuario.getMuestrasRecolectadas(), muestras);
 	}
 
-	@Test
-	void testUnUsuarioConoceCualesSonSusProyectosActivos() {
-		List<Proyecto> proyectos = Arrays.asList(proyecto, proyecto2);
-		usuario.registrarseEnProyecto(proyecto);
-		usuario.registrarseEnProyecto(proyecto2);
-		assertEquals(usuario.getProyectosActivos(), proyectos);
-	}
 
 	@Test
 	void testUnUsuarioSabeRealizarUnaVotacionAUnDesafio() throws Exception {
@@ -74,8 +69,8 @@ class UsuarioTestCase {
 
 	@Test
 	void testUnUsuarioSabeBuscarDesafiosSegunSuRecomendacion() throws Exception {
-		usuario.buscarDesafios(recomendacionPreferenciasEnJuego);
-		verify(recomendacionPreferenciasEnJuego, times(1)).seleccionDeDesafios(usuario);
+		usuario.buscarDesafios(sistema, recomendacionPreferenciasEnJuego);
+		verify(recomendacionPreferenciasEnJuego, times(1)).seleccionDeDesafios(sistema, usuario);
 	}
 
 	@Test

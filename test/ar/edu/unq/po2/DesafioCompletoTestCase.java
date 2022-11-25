@@ -50,9 +50,9 @@ class DesafioCompletoTestCase {
 		muestrasAProbar = Arrays.asList(muestra);
 		
 		when(desafio.getMuestrasRecolectadas()).thenReturn(2);
-		
 		when(desafioUsuario.cantidadDeMuestrasValidas(usuario)).thenReturn(1);
 		when(desafioUsuario.getDesafio()).thenReturn(desafio);
+		when(desafioUsuario.cantidadMuestrasRecolectadasEnElDesafio()).thenReturn(2);
 		when(desafioUsuario.getFechaAceptacion()).thenReturn(LocalDate.now());
 		
 		assertEquals(desafioCompleto.porcentajeDeCompletitud(desafioUsuario, usuario), 50);

@@ -11,18 +11,9 @@ import ar.edu.unq.po2.Recomendacion.Recomendacion;
 public class Usuario {
 
 	private List<Muestra> muestrasRecolectadas;
-	private List<Proyecto> proyectosActivos;
 	private Preferencia preferencia;
 	private List<DesafioUsuario> desafiosUsuario;
 
-	/**
-	 * Getter proyectos activos.
-	 * 
-	 * @return Devuelve los proyectos en los que esta participando el Usuario.
-	 */
-	public List<Proyecto> getProyectosActivos() {
-		return proyectosActivos;
-	}
 
 	/**
 	 * Getter muestras recolectadas
@@ -59,7 +50,6 @@ public class Usuario {
 	public Usuario(Preferencia preferencia) {
 		this.preferencia = preferencia;
 		this.muestrasRecolectadas = new ArrayList<Muestra>();
-		this.proyectosActivos = new ArrayList<Proyecto>();
 		this.desafiosUsuario = new ArrayList<DesafioUsuario>();
 	}
 
@@ -68,8 +58,8 @@ public class Usuario {
 	 * @param recomendacion, es la estrategia de busqueda que se utiliza para encontrar los desafios que puede aceptar el usuario.
 	 * @return desafiosFiltrados, una lista de desafios que cumplen la recomendacion dada.
 	 */
-	public List<Desafio> buscarDesafios(Recomendacion recomendacion) {
-		return recomendacion.seleccionDeDesafios(this);
+	public List<Desafio> buscarDesafios(Sistema sistema, Recomendacion recomendacion) {
+		return recomendacion.seleccionDeDesafios(sistema, this);
 	}
 
 	/**
@@ -113,10 +103,7 @@ public class Usuario {
 	 * @param proyecto, el proyecto en donde se esta registrando el usuario.
 	 */
 	public void registrarseEnProyecto(Proyecto proyecto) {
-		if (!this.getProyectosActivos().contains(proyecto)) {
 			proyecto.agregarUsuario(this);
-			this.proyectosActivos.add(proyecto);
-		}
 	}
 	
 	/**

@@ -22,10 +22,11 @@ class PreferenciasEnJuegoTestCase {
 	List<Proyecto> proyectosAProbar;
 	DesafioUsuario desafioDelUsuario;
 	Usuario usuario;
-
+	Sistema sistema;
+	
 	@BeforeEach
 	void setUp() throws Exception {
-
+		sistema = mock(Sistema.class);
 		preferenciasEnJuego = new PreferenciasEnJuego();
 		usuario = mock(Usuario.class);
 		preferencia = mock(Preferencia.class);
@@ -38,6 +39,7 @@ class PreferenciasEnJuegoTestCase {
 		desafio4 = mock(Desafio.class);
 		desafio5 = mock(Desafio.class);
 		desafio6 = mock(Desafio.class);
+		sistema = mock(Sistema.class);
 
 	}
 
@@ -77,12 +79,12 @@ class PreferenciasEnJuegoTestCase {
 		desafiosAProbar = Arrays.asList(desafio5, desafio2, desafio4, desafio3, desafio6, desafio);
 		when(proyecto.getDesafios()).thenReturn(desafiosAProbar);
 		proyectosAProbar = Arrays.asList(proyecto);
-		when(usuario.getProyectosActivos()).thenReturn(proyectosAProbar);
+		when(sistema.getProyectosDeUsuario(usuario)).thenReturn(proyectosAProbar);
 
 		List<Desafio> resultadoOrdenadoEsperado = Arrays.asList(desafio, desafio2, desafio3, desafio4, desafio5);
 
-		assertEquals(5, preferenciasEnJuego.seleccionDeDesafios(usuario).size());
-		assertEquals(resultadoOrdenadoEsperado, preferenciasEnJuego.seleccionDeDesafios(usuario));
+		assertEquals(5, preferenciasEnJuego.seleccionDeDesafios(sistema, usuario).size());
+		assertEquals(resultadoOrdenadoEsperado, preferenciasEnJuego.seleccionDeDesafios(sistema, usuario));
 	}
 
 }

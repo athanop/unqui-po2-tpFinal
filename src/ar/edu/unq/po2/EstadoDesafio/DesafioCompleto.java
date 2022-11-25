@@ -12,7 +12,7 @@ public class DesafioCompleto implements EstadoDesafioUsuario {
 
 	@Override
 	public Integer porcentajeDeCompletitud(DesafioUsuario desafioUsuario, Usuario usuario) {
-		return (desafioUsuario.cantidadDeMuestrasValidas(usuario) * 100) / desafioUsuario.getDesafio().getMuestrasRecolectadas();
+		return (desafioUsuario.cantidadDeMuestrasValidas(usuario) * 100) / desafioUsuario.cantidadMuestrasRecolectadasEnElDesafio();
 	}
 
 	@Override
